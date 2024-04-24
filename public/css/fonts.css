@@ -1,0 +1,20 @@
+@font-face {
+    font-family:'Font-title';
+    src: url('../data/font/title_first/Acme-Regular.ttf') format(truetype);
+}
+@font-face {
+    font-family:'Placeholder' ;
+    src: url('../data/font/placeholder/Rajdhani-Regular.ttf') format(truetype);
+}
+
+.font_title_first
+{
+    font-family: Font-title 
+    
+}
+.Placeholder
+{
+    font-family:Placeholder;
+}
+
+  

@@ -1,0 +1,22 @@
+.Logo2
+{
+    position: relative;
+}
+.Logo2::after
+{   content: "";
+    left: 0;
+    background: rgb(241 245 249);
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    animation: typing 2s steps(15) infinite;
+    border-left: 2px solid rgb(241 245 249);
+}
+@keyframes typing 
+{
+    100%
+    {
+        left:100%;
+        margin: 0 -35px 0 35px;
+    }
+}
