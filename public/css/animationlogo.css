@@ -20,3 +20,25 @@
         margin: 0 -35px 0 35px;
     }
 }
+.Logo3
+{
+    position: relative;
+}
+.Logo3::after
+{   content: "";
+    left: 0;
+    background: rgb(241 245 249);
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    animation: typings 2s steps(15) infinite;
+    border-left: 2px solid rgb(241 245 249);
+}
+@keyframes typings 
+{
+    100%
+    {
+        left:100%;
+       
+    }
+}
