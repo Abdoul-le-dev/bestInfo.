@@ -25,7 +25,7 @@
     <div class="flex flex-col">
 
         <div>
-            @include('composants.header')
+            @include('composants.header-connexion')
         </div>
         <div>
             @yield('page')

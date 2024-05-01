@@ -25,7 +25,7 @@
     <div class="flex flex-col">
 
         <div>
-            @include('composants.header')
+            @include('composants.login-header')
         </div>
         <div>
             @yield('page')

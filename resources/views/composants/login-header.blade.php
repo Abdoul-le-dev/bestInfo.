@@ -65,7 +65,7 @@
        </div>
 
        <div class="flex flex-row hidden lg:flex ">
-            <div class="mx-1 mt-2  items-center">
+            <div class="mx-1 mt-2  items-center hidden">
                 <a class="p-2 font_title_first bg-black text-white hover:bg-[#4287f5] cursor-pointer">Connexion</a>
             </div>
 
@@ -82,28 +82,7 @@
 
 
 </header>
-<div class="w-full  flex flex-row bg-slate-100 border-y-2 border-[#F0F0F0] justify-center items-center  ">
 
-    <ul class="flex w-full inline-block flex-row p-2 lg:bg-slate-100 justify-center items-center border-y-2 rounded-b-lg border-[#F0F0F0] overflow-x-auto ">
-       
-        <li class="mx-2 font_title_first   uppercase hover:border-t-2 p-1 border-[#4287f5] rounded-lg whitespace-nowrap" >A la une</li>
-        <li class="mx-2 font_title_first uppercase p-1 hover:border-b-2 border-[#4287f5] rounded-lg whitespace-nowrap" >Economie</li>
-        <li class="mx-2 font_title_first uppercase p-1 hover:border-t-2 border-[#4287f5] rounded-lg whitespace-nowrap" >Culture</li>
-        <li class="mx-2 font_title_first uppercase p-1 hover:border-b-2 border-[#4287f5] rounded-lg whitespace-nowrap" >Sante</li>
-        <li class="mx-2 font_title_first uppercase p-1 hover:border-t-2 border-[#4287f5] rounded-lg whitespace-nowrap" >Science</li>
-        <li class="mx-2 font_title_first uppercase p-1 hover:border-b-2 border-[#4287f5] rounded-lg whitespace-nowrap" >Politique</li>
-        
-       
-           
-       
-    </ul>
-    
-   
-       
-        
-    
-
-</div>
 
 <div class="hidden Menu3 relative transition ease-in-out delay-1000   min-h-48 bg-[#F0F0F0] flex sm:flex-row lg:flex-row justify-between w-full py-4 ">
 

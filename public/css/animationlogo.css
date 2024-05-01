@@ -1,3 +1,6 @@
+.bodys {
+    overflow-y: hidden; /* Cache la barre de défilement verticale et empêche le défilement */
+  }
 .Logo2
 {
     position: relative;

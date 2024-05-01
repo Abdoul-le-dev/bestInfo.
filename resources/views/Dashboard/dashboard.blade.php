@@ -7,4 +7,7 @@ Dashboard
 @endsection
 
 @section('page')
+<div class="relative">
+    @include('composants.model1')
+</div>
 @endsection
