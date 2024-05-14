@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Post as RequestsPost;
+use App\Http\Requests\PostUpdate;
 use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
+use App\Models\Category;
 use App\Models\PostDetail;
 
 class PostController extends Controller
@@ -13,9 +15,15 @@ class PostController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(RequestsPost $request)
+    public function dashborad()
     {
+      
+        $post = Post::latest()->first();
         
+        $posts_lue = Post::all();
+
+        return view('Dashboard.dashboard',compact('post','posts_lue'));
+
     }
 
     /**
@@ -51,6 +59,51 @@ class PostController extends Controller
         redirect()->route('session')->with('sucess','Article ajouter avec succes');
         
     }
+
+    public function updates(PostUpdate $request)
+    {
+     $titre = $request->titre;
+     $contenu = $request->description;
+    
+     $article1 = $request->article1;
+     $article2 = $request->article2;
+     $article3 = $request->article3;
+     $format = $request->format;
+    
+     
+     
+     $tab = [
+         'title' => $titre,
+         'description' => $contenu,
+         'type_article' =>$format
+ 
+     ];
+     if($request->file != null)
+     {
+        $fichier = $request->file->store('fichier');
+
+        $tab = array_merge($tab,
+        ['fichier' => $fichier,]
+     );
+
+     }
+
+     $id = $request->input('id');
+
+     $article = Post::findOrFail($id);
+
+     $article->update($tab);
+     $posts = Post::all();
+     $categories = Category::all();
+        
+     $posts_lue = Post::all();
+
+     
+    
+      
+     return view('Admin.dashboard',compact('posts','posts_lue','categories'));
+    }
+ 
 
     /**
      * Store a newly created resource in storage.

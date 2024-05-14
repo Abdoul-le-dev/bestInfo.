@@ -29,7 +29,7 @@ class AdminController extends Controller
         if(Auth::attempt($credentials))
         {
             session()->regenerate();
-            return redirect()->intended(route('session'));
+            return redirect()->intended(route('dashboard'));
         }
 
         return  view('Admin.login');

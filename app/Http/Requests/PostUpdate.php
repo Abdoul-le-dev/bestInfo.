@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class Post extends FormRequest
+class PostUpdate extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,9 +28,9 @@ class Post extends FormRequest
             'arctile1' => 'number',
             'arctile2' => 'number',
             'arctile3' => 'number',
-            'format' => 'image|required',
+            'format'   => 'required',
             'categorie' => 'required',
-            'file' => 'required',
+            'file' => 'sometimes',
         ];
     }
     public function messages()
@@ -43,14 +43,20 @@ class Post extends FormRequest
             'article1.number' => "Le champs article lié doit contenu que des chiffres comme ID ",
             'article2.number' => "Le champs article lié doit contenu que des chiffres comme ID ",
             'article3.number' => "Le champs article lié doit contenu que des chiffres comme ID ",
-            'format.required' => "Le format de l'article est requis ",
-            'format.image' => "En aatente d'une image ",
-            'categorie.required' => "Labcatégorie de l'article est requis ",
-            'file.required' => "Un fichier est requis ",
+            'categorie.required' => "La catégorie de l'article est requis ",
+            'format.required' => "Le format est requis ",
 
 
 
 
         ];
+    }
+    protected function prepareForValidation()
+    {
+        if($this->format == null)
+        {
+            $this->request->remove('file');
+        }
+
     }
 }

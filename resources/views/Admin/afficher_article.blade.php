@@ -15,7 +15,7 @@
                 {{ $post->title }}
             </h2>
         </div>   
-        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+        <div class=" flex flex-row justify-center items-center max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
             <img src="{{ asset('storage/' . $post->fichier) }}" alt="">
             
         </div>
@@ -23,8 +23,8 @@
             <p class="mt-2 text-gray-600 Placeholder">{{ $post->description }}</p>
         </div>
         <div class="mt-2 flex :flex-row justify-between items-center">
-            <a href="{{ route('update',['id',$post->id])}}" class="roundedbg-[#4287f5] border-[#4287f5] p-2 text-white font_title_first text-xs mb-2">Modifier l'article</a>
-            <a href="{{route('delete')}}" class="rounded bg-red-500 border-red-500  p-2 text-white font_title_first text-xs mb-2">Supprimer l'article</a>
+            <a href="{{ route('updates',['id'=> $post->id])}}" class="rounded bg-[#4287f5] border-[#4287f5] p-2 text-white font_title_first text-xs mb-2">Modifier l'article</a>
+            <a href="{{  route('delete',['id'=> $post->id])}}" class="rounded bg-red-500 border-red-500  p-2 text-white font_title_first text-xs mb-2">Supprimer l'article</a>
         </div>
        
     </div>

@@ -22,16 +22,24 @@
 </head>
 <body>
 
-    <div class="flex flex-col">
+    <div class="flex flex-col ">
 
-        <div>
+        <div class="">
             @include('composants.header')
         </div>
-        <div>
+        <div class="mt-[100px] Srollhead">
+            <script>
+                window.addEventListener("scroll",function()
+                {
+                    var header = document.querySelector('.header');
+                    header.classList.toggle("sticky",window.scrollY > 0)
+                });
+            </script>
             @yield('page')
         </div>
 
     </div>
     
 </body>
+@include('composants.footer')
 </html>

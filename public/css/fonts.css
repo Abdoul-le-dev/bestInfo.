@@ -6,6 +6,35 @@
     font-family:'Placeholder' ;
     src: url('../data/font/placeholder/Rajdhani-Regular.ttf') format(truetype);
 }
+@font-face {
+    font-family:'Video_title' ;
+    src: url('../data/font/second_font/OleoScript-Regular.ttf') format(truetype);
+}
+@font-face {
+    font-family:'Description' ;
+    src: url('../data/font/3_font/Satisfy-Regular.ttf') format(truetype);
+}
+@font-face {
+    font-family:'Title_font' ;
+    src: url('../data/font/title/Rowdies-Regular.ttf') format(truetype);
+}
+
+.Title_font
+{
+    font-family: Title_font 
+    
+}
+
+.Video_title
+{
+    font-family: Video_title 
+    
+}
+.Description
+{
+    font-family: Description
+    
+}
 
 .font_title_first
 {
@@ -50,6 +79,15 @@
             transform: translateY(30px) scale(0.9);
         }
 
+}
+header.sticky .headers 
+{
+    display: none;
+}
+header.sticky 
+{
+    position: fixed;
+    top: 0;
 }
 
   
