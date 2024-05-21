@@ -11,8 +11,13 @@
     <link rel="stylesheet" href="./css/fonts.css">
     <link rel="stylesheet" href="./css/animationslide.css">
     <link rel="stylesheet" href="./css/animationlogo.css">
+   
     <script src="./js/jquery/jquery.js"></script>
+    <script defer src="./js/telechargement.js"></script>
     <script src="./js/js.js"></script>
+    <script defer src="./js/model_video.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+
     <script defer src="./js/animationslider.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     

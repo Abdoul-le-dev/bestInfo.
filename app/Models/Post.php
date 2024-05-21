@@ -36,6 +36,11 @@ class Post extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function post_detail()
+    {
+        return $this->hasOne(PostDetail::class);
+       
+    }
     public function getTitleAttribute($attribute)
     {
         return Str::title($attribute);

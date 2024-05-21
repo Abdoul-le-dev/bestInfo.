@@ -16,7 +16,27 @@
             </h2>
         </div>   
         <div class=" flex flex-row justify-center items-center max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-            <img src="{{ asset('storage/' . $post->fichier) }}" alt="">
+            @if ($post->fichier_image)
+
+            <img src="{{ asset('storage/' . $post->fichier_image) }}" alt="image">
+                
+            @endif
+
+            @if ($post->fichier_link)
+
+            <iframe class="w-full h-80 lg:min-h-[400px]"  src="{{$post->fichier_link}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+                
+            @endif
+
+            @if ($post->fichier_audio)
+
+            <audio controls >
+                <source src="{{ asset('storage/' . $post->fichier_audio) }}">
+            </audio>
+                
+            @endif
+           
             
         </div>
         <div class="mt-2">

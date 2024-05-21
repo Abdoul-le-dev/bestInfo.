@@ -1,21 +1,23 @@
-<section class="bg-black" >
+<section class="bg-black w-full" >
 
-    <div class="flex flex-col ">
+    <div class="flex flex-col lg:p-6 w-full ">
 
         <div class="p-6 flex justify-center">
             <p class="text-white Title_font text-2xl">Macron considers debating Le Pen to avoid European elections fiasco</p>
         </div>
 
         <div>
-            <iframe class="w-full min-h-[400px]"  src="https://www.youtube-nocookie.com/embed/U5cK0gVOz_Q?si=M3oOG8FYCKxgvhuS&amp;controls=0&amp;start=68" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <iframe class="w-full h-80 lg:min-h-[400px]"  src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
         </div>
+        
         
 
     </div>
     <div class="flex flex-col lg:flex-row">
+        
         <div class="w-full lg:w-2/3">
-            <p class="text-white Description p-6 text-xl">You can share an article by clicking on the share icons at the top right of it. 
+            <p class="text-white Description p-6 text-xl tracking-wide leading-relaxed ">You can share an article by clicking on the share icons at the top right of it. 
                 The total or partial reproduction of an article, without the prior written authorization of Le Monde, is strictly forbidden. 
                 For more information, see our Terms and Conditions. 
                 For all authorization requests, contact syndication@lemonde.fr. 
@@ -28,7 +30,14 @@
         </div>
 
         {{--video de la mm categorie ou similaire --}}
+
         <div class="w-full lg:w-1/3 p-6">
+            <div class="flex flex-col justify-center items-center "> 
+                <p class="text-xl Video_title  text-[#4287f5]  ">
+                    Vidéo de la même rubrique
+                </p>
+                <div class=" border-t-2 border-[#4287f5] w-48 lg:hidden "></div>
+            </div>
             <div class="py-2">
                 <div class="flex flex-row w-full">
 
@@ -122,8 +131,171 @@
     </div>
    
 </section>
-<section class="video_section bg-[url('./data/image/video1.jpg')] min-h-[80vh]">
-    <div class="p-6 ">
+<section class="video_section  min-h-[80vh] w-full">
+    <div class="p-6 flex flex-row w-full">
+
+        <div class="flex-nowrap">
+            <p class="Title_font text-xl text-nowrap ">Derniers Articles</p>
+        </div>
+        <div class="w-full border-t-2 border-black mt-4 "></div>
 
     </div>
+    <div class="p-10 w-full flex flex-row lg:flex-row   ">
+
+        <div class=" w-1/2 py-2 mx-6 ">
+            <div class=" flex flex-row w-full mt-2 border-[0.2px]  w-full border-white">
+
+                <div class="w-1/2">
+                    <img src="./data/image/yes.jpg" alt="" class="">
+                </div>
+                <div class="flex flex-col  w-1/2 justify-between ">
+
+                    <p class="py-2 px-2 Video_title text-white  text-base cursor-pointer hover:text-[#4287f5]">
+                        Macron considers debating Le Pen to avoid European elections fiasco
+                    </p>
+                    <div class="flex flex-row justify-between">
+                        <p class=" Video_title text-white px-2 cursor-pointer hover:text-[#4287f5]"> name </p>
+                        <p class=" Video_title text-white  px-2 cursor-pointer hover:text-[#4287f5]"> name date</p>
+                 
+                 
+                    </div>
+                    
+                    
+
+                </div>
+                
+            </div>
+           
+        </div>
+        <div class=" w-1/2 py-2 mx-6">
+
+            
+
+                <div class=" flex flex-row w-full mt-2  border-[0.2px]  w-full border-white">
+
+                    <div class="w-1/2">
+                        <img src="./data/image/yes.jpg" alt="" class="">
+                    </div>
+                    <div class="flex flex-col  w-1/2 justify-between ">
+    
+                        <p class="py-2 px-2 Video_title text-white  text-base cursor-pointer hover:text-[#4287f5]">
+                            Macron considers debating Le Pen to avoid European elections fiasco
+                        </p>
+                        <div class="flex flex-row justify-between">
+                            <p class=" Video_title text-white px-2 cursor-pointer hover:text-[#4287f5]"> name </p>
+                            <p class=" Video_title text-white  px-2 cursor-pointer hover:text-[#4287f5]"> name date</p>
+                     
+                     
+                        </div>
+                        
+                        
+    
+                    </div>
+                    
+                </div>
+
+            
+            
+           
+        </div>
+        
+
+    </div>
+</section>
+<section class="min-h-[80vh] w-full bg-[url('{{ asset('storage/categorie/afrique/2.jpg') }}')]">
+
+    <div class="p-6 flex flex-row w-full">
+
+        <div class="flex-nowrap">
+            <p class="Title_font text-xl text-nowrap text-white">Politique Articles</p>
+        </div>
+        <div class="w-full border-t-2 border-white mt-4 "></div>
+
+    </div>
+    <div class="p-10 w-full flex flex-row lg:flex-row   ">
+
+        <div class=" w-1/3 py-2 mx-6 ">
+            <div class=" flex flex-col w-full mt-2   w-full ">
+
+                <div class="w-[300px]">
+                    <img src="./data/image/yes.jpg" alt="" class="">
+                </div>
+                <div class="flex flex-col  w-[300px] justify-between ">
+
+                    <p class="py-2 px-2 Video_title text-white  text-base cursor-pointer hover:text-[#4287f5]">
+                        Macron considers debating Le Pen to avoid European elections fiasco
+                    </p>
+                    <div class="flex flex-row justify-between">
+                        <p class=" Video_title text-white px-2 cursor-pointer hover:text-[#4287f5]"> name </p>
+                        <p class=" Video_title text-white  px-2 cursor-pointer hover:text-[#4287f5]"> name date</p>
+                 
+                 
+                    </div>
+                    
+                    
+
+                </div>
+                
+            </div>
+           
+        </div>
+
+        
+        <div class=" w-1/3 py-2 mx-6 ">
+            <div class=" flex flex-col w-full mt-2   w-full ">
+
+                <div class="w-[300px]">
+                    <img src="./data/image/yes.jpg" alt="" class="">
+                </div>
+                <div class="flex flex-col  w-[300px] justify-between ">
+
+                    <p class="py-2 px-2 Video_title text-white  text-base cursor-pointer hover:text-[#4287f5]">
+                        Macron considers debating Le Pen to avoid European elections fiasco
+                    </p>
+                    <div class="flex flex-row justify-between">
+                        <p class=" Video_title text-white px-2 cursor-pointer hover:text-[#4287f5]"> name </p>
+                        <p class=" Video_title text-white  px-2 cursor-pointer hover:text-[#4287f5]"> name date</p>
+                 
+                 
+                    </div>
+                    
+                    
+
+                </div>
+                
+            </div>
+           
+        </div>
+
+        <div class=" w-1/3 py-2 mx-6 ">
+            <div class=" flex flex-col w-full mt-2   w-full ">
+
+                <div class="w-[300px]">
+                    <img src="./data/image/yes.jpg" alt="" class="">
+                </div>
+                <div class="flex flex-col  w-[300px] justify-between ">
+
+                    <p class="py-2 px-2 Video_title text-white  text-base cursor-pointer hover:text-[#4287f5]">
+                        Macron considers debating Le Pen to avoid European elections fiasco
+                    </p>
+                    <div class="flex flex-row justify-between">
+                        <p class=" Video_title text-white px-2 cursor-pointer hover:text-[#4287f5]"> name </p>
+                        <p class=" Video_title text-white  px-2 cursor-pointer hover:text-[#4287f5]"> name date</p>
+                 
+                 
+                    </div>
+                    
+                    
+
+                </div>
+                
+            </div>
+           
+        </div>
+        
+        
+        
+
+    </div>
+    
 </section>

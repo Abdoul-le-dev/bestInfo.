@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+use App\Models\Post;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -20,4 +21,9 @@ class PostDetail extends Model
             $postdetail->post()->associate($post);
         });
     }*/
+
+    public function posts()
+    {
+        return $this->belongsTo(Post::class);
+    } 
 }

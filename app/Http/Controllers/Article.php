@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\PostUpdate;
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Detail;
+use App\Models\articleEnAvant;
 use App\Models\Category;
 use App\Models\PostDetail;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -42,6 +44,11 @@ class Article extends Controller
     $categories = Category::all();
     return view('Admin.categorie',compact('categories'));
    }
+   public function category()
+   {
+    $categories = Category::all();
+    return view('Admin.category');
+   }
    public function categories(Request $request)
    {
     $request->validate([
@@ -62,7 +69,7 @@ class Article extends Controller
         'name'=> $categorie
     ]);
 
-    return view('Admin.dashboard',compact('categories','posts'))->with('success', 'La catégorie à été bien ajouté.');
+    return redirect()->route('dashboard',compact('categories','posts'))->with('success', 'La catégorie à été bien ajouté.');
    }
    public function update_categorie(Request $request)
    {
@@ -180,6 +187,181 @@ class Article extends Controller
     return view('Dashboard.video');
 
    }
+   public function view_poadcast()
+   {
 
+    return view('Dashboard.poadcast');
+
+   }
+
+   public function lastest()
+   {
+    // 20 dernier article sinon 10 sinon 5
+
+    $post_count = Post::count();
+
+    if($post_count < 5)
+    {
+        return 'impossible';
+    }
+    if($post_count >= 5)
+    {
+        if($post_count = 5)
+        {
+            $post_data = Post::latest()->take(5)->get();
+            return response()->json(["data" => $post_data  ]);
+        }
+        if($post_count  > 5 && $post_count  <10   )
+        {
+            $post_data = Post::latest()->take(5)->get();
+            return response()->json(["data" => $post_data  ]);
+        }
+        if($post_count = 10)
+        {
+            $post_data = Post::latest()->take(10)->get();
+            return response()->json(["data" => $post_data  ]);
+        }
+        if($post_count  > 10 && $post_count  <20   )
+        {
+            $post_data = Post::latest()->take(10)->get();
+            return response()->json(["data" => $post_data  ]);
+        }
+        if($post_count = 20)
+        {
+            $post_data = Post::latest()->take(20)->get();
+            return response()->json(["data" => $post_data  ]);
+        }
+        if($post_count  > 20    )
+        {
+            $post_data = Post::latest()->take(20)->get();
+             return response()->json(["data" => $post_data  ]);
+        }
+    }
+
+   } 
+   public function article_en_avant()
+   {
+
+    $article_count = articleEnAvant::count();
+    if($article_count>0 && $article_count <= 3)
+    {
+        $article_en_avant = articleEnAvant::all();
+        
+        return response()->json(["data" => $article_en_avant ]);
+
+    }
+    elseif($article_count>3 )
+    {
+        $article_en_avant = articleEnAvant::latest()->take(3)->get();
+        return response()->json(["data" => $article_en_avant ]);
+    } 
+    return 'impossible';
+
+
+   } 
+   public function article_plus_lue()
+   {
+
+   } 
+   public function article_plus_lue_categorie()
+   {
+
+   } 
+
+   public function article_format_video()
+   {
+
+   } 
+   public function article_format_poadcast()
+   {
+
+   } 
+   public function recherche(Request $request)
+   {
+        // Récupérer l'ID depuis le paramètre de requête 'recherche'
+        $id = $request->input('recherche');
+
+        // Logique pour traiter l'ID et récupérer les données associées
+        $data = Post::find($id);
+
+        if ($data) {
+            // Retourner une réponse JSON avec les données trouvées
+            return response()->json(['data' => $data], 200);
+        } else {
+            // Retourner une réponse JSON avec un message d'erreur si les données ne sont pas trouvées
+            return response()->json(['error' => 'Données non trouvées'], 404);
+        }
+    }
+
+    public function article_similaire()
+    {
+        $data = Post::latest()->first();
+        $data_avant = articleEnAvant::latest()->first();
+        $count =0;
+        $data_table = [];
+        if($data)
+        {
+            $data_details = Detail::find($data->id);
+
+            if($data_details)
+            {
+                foreach($data_details as $datas)
+                {
+                    if($datas->post_similaire_1 != null)
+                    {
+                        $count++;
+                        $data_table[] = $datas->post_similaire_1;
+                    }
+                    if($datas->post_similaire_2 != null)
+                    {
+                        $count++;
+                        $data_table[] = $datas->post_similaire_3;
+                    }
+                    if($datas->post_similaire_1 != null)
+                    {
+                        $count++;
+                        $data_table[] = $datas->post_similaire_3;
+                    }
+                }
+            }
+        }
+        if($data_avant)
+        {   
+            $article_count = articleEnAvant::count();
+            if($article_count>0 && $article_count <= 3)
+            {
+                $article_en_avant = articleEnAvant::all();
+                foreach($article_en_avant as $datas)
+                {
+                        $count++;
+                        $data_table[] = $datas->id_article;
+                    
+                    
+                }
+                
+                
+        
+            }
+            elseif($article_count>3 )
+            {
+                $article_en_avant = articleEnAvant::latest()->take(3)->get();
+                foreach($article_en_avant as $datas)
+                {
+                        $count++;
+                        $data_table[] = $datas->id_article;
+                    
+                    
+                }
+                
+            } 
+
+        }
+
+        if($count > 3)
+        {
+            
+
+        }
+    }
 }
   

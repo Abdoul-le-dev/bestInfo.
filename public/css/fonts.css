@@ -89,5 +89,8 @@ header.sticky
     position: fixed;
     top: 0;
 }
+progress::-webkit-progress-value{
+    background:#4287f5 ;
+}
 
   

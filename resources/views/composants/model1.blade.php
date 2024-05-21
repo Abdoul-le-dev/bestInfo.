@@ -53,7 +53,30 @@
             </div>
             {{---  image ou video publication----}}
             <div class="flex mt-2 items-center justify-content">
-                <img src="{{ asset('storage/' . $post->fichier) }}" alt="post1">
+               
+                @if ($post->fichier_image)
+
+                <img src="{{ asset('storage/' . $post->fichier_image) }}" alt="image">
+                    
+                @endif
+    
+                @if ($post->fichier_link)
+    
+                <iframe class="w-full h-80 lg:min-h-[400px]"  src="{{$post->fichier_link}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    
+                    
+                @endif
+    
+                @if ($post->fichier_audio)
+    
+               <div class="flex justify-center p-6"> 
+                <audio controls  >
+                    <source src="{{ asset('storage/' . $post->fichier_audio) }}">
+                </audio>
+               </div>
+                    
+                @endif
+               
             </div>
             {{--- description de l'article----}}
             <div>
@@ -106,39 +129,15 @@
     
     
     {{---  secion rubrique ----}}
-    <div class="flex flex-col w-full lg:w-1/3  lg:flex ">
+    <div class="flex section_article flex-col w-full lg:w-1/3  lg:flex ">
 
         {{---  Article a metre en avant comme sur la culture ----}}
 
         <div class="mt-2 border-b-2  mt-4 ml-4 border-[#4287f5] flex justify-center lg:justify-start  ">
-            <h1 class="text-2xl font_title_first font-normal">Plus lues</h1>
+            <h1 class="text-2xl font_title_first font-normal">Article mis en avant</h1>
         </div>
 
-        @forelse ($posts_lue as $post )
-
-        <div class="flex flex-col p-4 ml-4  ">
-
-            
-            <div class="flex flex-col mt-2 ">
-                <p class="text-xl text-[#4287f5] hover:underline font_title_first font-normal">
-                    {{$post->title   }}
-                </p>
-                <img src="{{ asset('storage/' . $post->fichier) }}" alt="post1 h-20" class="mt-2">
-                <p class=" Placeholder mt-2">
-                    {{ Str::limit($post->description, 100) }}
-                </p>
-            </div>
-
-            <div>
-                <p class="font_title_first text-gray-400 text-normal"> {{$post->user->name   }}</p>
-            </div>
-
-        </div>
        
-            
-        @empty
-            
-        @endforelse
        
        
         
@@ -170,7 +169,7 @@
         
         <div class="item flex flex-col">
 
-            <img src="{{ asset('storage/' . $post->fichier) }}" alt="">
+            <img src="{{ asset('storage/' . $post->fichier_image) }}" alt="">
           
             <p class="font_title_first text_xs  mt-4 ">
                 {{$post->title}}
@@ -184,7 +183,7 @@
                 {{htmlspecialchars($post->title)}}
             </p>
 
-            <img src="{{ asset('storage/' . $post->fichier) }}" alt="">
+            <img src="{{ asset('storage/' . $post->fichier_image) }}" alt="">
 
             <p class="fPlaceholder text_xs  mt-4 ">
                 {{Str::limit($post->description,50)}}
@@ -196,7 +195,7 @@
         </div>
         <div class="item flex flex-col">
 
-            <img src="{{ asset('storage/' . $post->fichier) }}" alt="">
+            <img src="{{ asset('storage/' . $post->fichier_image) }}" alt="">
           
             <p class="font_title_first text_xs  mt-4 ">
                 {{$post->title}}
@@ -207,7 +206,7 @@
         <div class="item flex flex-col  justify-between">
 
            <div>
-            <img src="{{ asset('storage/' . $post->fichier) }}" alt="">
+            <img src="{{ asset('storage/' . $post->fichier_image) }}" alt="">
           
             <p class="font_title_first text_xs  mt-8 text-[#4287f5] hover:underline">
                 {{$post->title}}
@@ -273,7 +272,7 @@
             <h3 class="p-2 font_title_first " >{{$post->title}}</h3>
         </div>
         <div class="flex justify-center">
-            <img src="{{ asset('storage/' . $post->fichier) }}" class="h-48" alt="{{ Str::limit($post->title,5)}}">
+            <img src="{{ asset('storage/' . $post->fichier_image) }}" class="h-48" alt="{{ Str::limit($post->title,5)}}">
         </div>
         <div>
             <h3 class="p-2 font_title_first text-xs">{{ Str::limit($post->description,120)}}</h3>
@@ -293,7 +292,7 @@
             <h3 class="p-2 font_title_first " >{{$post->title}}</h3>
         </div>
         <div class="flex justify-center">
-            <img src="{{ asset('storage/' . $post->fichier) }}" class="h-48" alt="{{ Str::limit($post->title,5)}}">
+            <img src="{{ asset('storage/' . $post->fichier_image) }}" class="h-48" alt="{{ Str::limit($post->title,5)}}">
         </div>
         <div>
             <h3 class="p-2 font_title_first text-xs">{{ Str::limit($post->description,120)}}</h3>
@@ -313,7 +312,7 @@
             <h3 class="p-2 font_title_first " >{{$post->title}}</h3>
         </div>
         <div class="flex justify-center">
-            <img src="{{ asset('storage/' . $post->fichier) }}" class="h-48" alt="{{ Str::limit($post->title,5)}}">
+            <img src="{{ asset('storage/' . $post->fichier_image) }}" class="h-48" alt="{{ Str::limit($post->title,5)}}">
         </div>
         <div>
             <h3 class="p-2 font_title_first text-xs">{{ Str::limit($post->description,120)}}</h3>
@@ -333,7 +332,7 @@
             <h3 class="p-2 font_title_first " >{{$post->title}}</h3>
         </div>
         <div class="flex justify-center">
-            <img src="{{ asset('storage/' . $post->fichier) }}" class="h-48" alt="{{ Str::limit($post->title,5)}}">
+            <img src="{{ asset('storage/' . $post->fichier_image) }}" class="h-48" alt="{{ Str::limit($post->title,5)}}">
         </div>
         <div>
             <h3 class="p-2 font_title_first text-xs">{{ Str::limit($post->description,120)}}</h3>

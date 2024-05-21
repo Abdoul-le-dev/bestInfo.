@@ -8,6 +8,7 @@ use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Models\Category;
+use App\Models\Details;
 use App\Models\PostDetail;
 
 class PostController extends Controller
@@ -31,6 +32,103 @@ class PostController extends Controller
      */
     public function create(RequestsPost $request)
     {
+
+        $titre = $request->titre;
+        $contenu = $request->description;
+       // $categorie = $request->categorie;
+        $article1 = $request->article1;
+        $article2 = $request->article2;
+        $article3 = $request->article3;
+        $format = $request->format;
+        $video_link = $request->video_link ;
+       
+        
+
+        $post_id = Post::latest()->first();
+        if($post_id !== null ){$post_id = (int) $post_id->id + 1;}
+        else
+        {
+            $post_id=1;
+
+        }
+        
+        if($format =='Image')
+        {
+            $fichier = $request->file->store('fichier');
+            
+            Details::create([
+                'post_id'  => $post_id, // Ensure this is the correct field name in your database
+                'post_similaire_1' => $article1,
+                'post_similaire_2' => $article2,
+                'post_similaire_3' => $article3,
+            ]);
+
+            $post = Post::create([
+                    'title'      =>$titre,
+                    'description' =>$contenu,
+                    'fichier_image'=>$fichier,
+                    'type_article'=>$format,
+                    'detail_id'=>$post_id,
+                    
+            ]);
+        }
+        if($format =='Video')
+        {   
+           
+
+            // Extraire l'identifiant de la vidéo de l'URL
+            preg_match('/youtu\.be\/([^\?]*)/', $video_link, $matches);
+            $video_id = $matches[1];
+            $video_id = "https://www.youtube-nocookie.com/embed/".$video_id."?si=sutV20EDxIDLzQLy&amp;controls=0&amp;start=68";
+            
+            Details::create([
+                'post_id'  => $post_id, // Ensure this is the correct field name in your database
+                'post_similaire_1' => $article1,
+                'post_similaire_2' => $article2,
+                'post_similaire_3' => $article3,
+            ]);
+            $post = Post::create([
+                'title'      =>$titre,
+                'description' =>$contenu,
+               // 'fichier_image'=>$fichier,
+                'type_article'=>$format,
+                'detail_id'=>$post_id,
+                'fichier_link'=>$video_id,
+                
+            ]);
+
+        }
+        if($format =='Poadcast')
+        {
+            $fichier = $request->file->store('fichier_audio');
+            
+            Details::create([
+                'post_id'  => $post_id, // Ensure this is the correct field name in your database
+                'post_similaire_1' => $article1,
+                'post_similaire_2' => $article2,
+                'post_similaire_3' => $article3,
+            ]);
+
+            $post = Post::create([
+                    'title'      =>$titre,
+                    'description' =>$contenu,
+                    'fichier_audio'=>$fichier,
+                    'type_article'=>$format,
+                    'detail_id'=>$post_id,
+                    
+            ]);
+        }
+        
+        
+        
+
+      
+        return redirect()->route('dashboard')->with('sucess','Article ajouter avec succes');
+        
+    }
+
+    public function create_poadcast(RequestsPost $request)
+    {
         $titre = $request->titre;
         $contenu = $request->description;
        // $categorie = $request->categorie;
@@ -40,24 +138,6 @@ class PostController extends Controller
         $format = $request->format;
         $fichier = $request->file->store('fichier');
 
-       $post= Post::create([
-            'title'      =>$titre,
-            'description' =>$contenu,
-            'fichier'    =>$fichier,
-            'type_article'=>$format,
-            
-        ]);
-        
-        
-        PostDetail::create([
-            'post_id'  => $post->id, // Ensure this is the correct field name in your database
-        'post_similaire_1' => $article1,
-        'post_similaire_2' => $article2,
-        'post_similaire_3' => $article3,
-        ]);
-
-        redirect()->route('session')->with('sucess','Article ajouter avec succes');
-        
     }
 
     public function updates(PostUpdate $request)

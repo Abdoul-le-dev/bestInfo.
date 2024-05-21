@@ -19,7 +19,7 @@
         </div>
 
         <div class="mx-2 hidden lg:flex ">
-            <h2><a href="/categorie" class=" font_title_first hover:cusor-pointer  hover:text-[#4287f5]">Catégorie</a></h2>
+            <h2><a href="{{route('categorie_view')}}" class=" font_title_first hover:cusor-pointer  hover:text-[#4287f5]">Catégorie</a></h2>
         </div>
 
         <div class="flex flex-row items-center ml-4 md:hidden">

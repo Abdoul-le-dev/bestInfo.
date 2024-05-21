@@ -18,13 +18,14 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('description');
-            $table->string('fichier')->nullable();
-           // $table->string('video')->nullable();
-           // $table->string('poadcast')->nullable();
-            $table->string('type_article')->nullable();
-           // $table->string('disposition')->nullable();
-           $table->boolean('mettre_avant')->default(0);
-
+            $table->string('fichier_image')->nullable();
+            $table->string('fichier_audio')->nullable();
+            $table->string('fichier_link')->nullable();
+            $table->string('type_article');
+            $table->unsignedBigInteger('detail_id');
+            
+            $table->boolean('mettre_avant')->default(0);
+            $table->foreign('detail_id')->references('id')->on('details');
             $table->foreignIdFor(Category::class);
             $table->foreignIdFor(User::class);
             

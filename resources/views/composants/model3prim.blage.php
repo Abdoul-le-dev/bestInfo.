@@ -1,14 +1,14 @@
 <section class=" hidden min-h-[80vh] lg:flex lg:flex-row  p-10 bg-[url('./data/image/1.jpg')] bg-contain">
     <div class="w-2/3 flex flex-col justify-center">
 
-        <p class="Categorie_model3 Title_font text-2xl mt-2 text-white p-10"></p>
-        <p class="Titre_model3 mt-10 text-white font_title_first text-xl px-10"></p>
+        <p class="Title_font text-2xl mt-2 text-white p-10">Géopolitique</p>
+        <p class="mt-10 text-white font_title_first text-xl px-10">Un regard sur la politique internationale. Du lundi au vendredi avec Pierre Haski. Samedi et dimanche avec Gallagher Fenwick</p>
 
         <div class="flex flex-row justify-between mt-10 px-10  ">
             <div class="flex flex-row p-2 bg-white rounded-md justify-center px-4">
-                <img src="./data/icons/play-circle.png" alt="play" onclick="playTracks()" class="bt1">
-                <img src="./data/icons/pause-circle.png" alt="play" class="bt2 hidden" onclick="pauseTracks()">
-                <a href="" class="bt3 text-black  mx-2 p-1 font_title_first">Ecouter</a>
+                <img src="./data/icons/play-circle.png" alt="play">
+                <img src="./data/icons/pause-circle.png" alt="play" class="hidden">
+                <a href="" class="text-black  mx-2 p-1 font_title_first">Ecouter</a>
 
             </div>
 
@@ -60,7 +60,7 @@
                     </div>
                 </div>
         
-                <div id="wave" class="mt-4 hidden">
+                <div id="wave" class="mt-4">
                     <span class="stroke bg-gray-300 h-2 w-10"></span>
                     <span class="stroke bg-gray-300 h-2 w-10"></span>
                     <span class="stroke bg-gray-300 h-2 w-10"></span>
@@ -70,13 +70,12 @@
                     <span class="stroke bg-gray-300 h-2 w-10"></span>
                 </div>
             </div>
-            
         </div>
 
     </div>
     <div class="w-1/3 flex justify-center">
 
-       <div> <img src="./data/image/img_model3.jpg" alt=""  class="Img_model3 rounded-md w-[300px] h-[300px] object-cover"></div>
+       <div> <img src="./data/image/video1.jpg" alt=""  class=" rounded-md w-[300px] h-[300px]"></div>
 
     </div>
    
@@ -95,8 +94,8 @@
     
     <div class="w-full flex flex-col justify-center">
 
-        <p class="Categorie_model3 Title_font text-2xl mt-6 text-white"></p>
-        <p class="Title_model3 mt-10 text-white font_title_first text-xl "></p>
+        <p class="Title_font text-2xl mt-6 text-white">Géopolitique</p>
+        <p class="mt-10 text-white font_title_first text-xl ">Un regard sur la politique internationale. Du lundi au vendredi avec Pierre Haski. Samedi et dimanche avec Gallagher Fenwick</p>
 
         <div class="flex flex-row justify-between mt-10  ">
             <div class="flex flex-row p-2 bg-white rounded-md justify-center px-4">
@@ -128,19 +127,19 @@
             <div class="border flex min-[300px]:flex-col md:flex-row border-transparent p-8 rounded-lg bg-gray-100 shadow-md">
                 
         
-                <div class="flex hidden items-center justify-center mt-4">
+                <div class="flex items-center justify-center mt-4">
                     <div class="current-time px-4">00:00</div>
                     <input type="range" min="1" max="100" value="0" class="seek_slider w-2/3 h-5 bg-blue-500" onchange="seekTo()">
                     <div class="total-duration px-4">00:00</div>
                 </div>
         
-                <div class="flex hidden items-center justify-center mt-4">
+                <div class="flex items-center justify-center mt-4">
                     <i class="fas fa-volume-down px-4"></i>
                     <input type="range" min="1" max="100" value="99" class="volume_slider w-1/3 h-5 bg-blue-500" onchange="setVolume()">
                     <i class="fas fa-volume-up px-4"></i>
                 </div>
         
-                <div class="flex hidden items-center justify-center mt-4">
+                <div class="flex items-center justify-center mt-4">
                     <div class="random-track cursor-pointer px-4" onclick="randomTrack()">
                         <i class="fas fa-random text-2xl" title="random"></i>
                     </div>
@@ -153,10 +152,16 @@
                         <i class="fas fa-repeat text-2xl" title="repeat"></i>
                     </div>
                 </div>
-
-               
         
-               
+                <div id="wave" class="mt-4">
+                    <span class="stroke bg-gray-300 h-2 w-10"></span>
+                    <span class="stroke bg-gray-300 h-2 w-10"></span>
+                    <span class="stroke bg-gray-300 h-2 w-10"></span>
+                    <span class="stroke bg-gray-300 h-2 w-10"></span>
+                    <span class="stroke bg-gray-300 h-2 w-10"></span>
+                    <span class="stroke bg-gray-300 h-2 w-10"></span>
+                    <span class="stroke bg-gray-300 h-2 w-10"></span>
+                </div>
             </div>
         </div>
 
@@ -168,16 +173,6 @@
     </script>
     
 </section>
-<div class="max-w-4xl p-10 py-6 mx-auto bg-white rounded-lg shadow-md">
-        
-      
-   
-    <div class="mt-2">
-        <p class="Description_model3 mt-2 text-gray-600 Placeholder"></p>
-    </div>
-    
-   
-</div>
 <section class="bg-white min-h-[80vh]" >
     <div class="  flex flex-col justify-center items-center mt-8 p-2">
         <p class="Title_font text-2xl">Dans la même rubrique</p>

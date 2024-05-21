@@ -28,9 +28,9 @@ class Post extends FormRequest
             'arctile1' => 'number',
             'arctile2' => 'number',
             'arctile3' => 'number',
-            'format' => 'image|required',
+            'format' => 'required',
             'categorie' => 'required',
-            'file' => 'required',
+            //'file' => 'required',
         ];
     }
     public function messages()
@@ -44,9 +44,9 @@ class Post extends FormRequest
             'article2.number' => "Le champs article lié doit contenu que des chiffres comme ID ",
             'article3.number' => "Le champs article lié doit contenu que des chiffres comme ID ",
             'format.required' => "Le format de l'article est requis ",
-            'format.image' => "En aatente d'une image ",
-            'categorie.required' => "Labcatégorie de l'article est requis ",
-            'file.required' => "Un fichier est requis ",
+            
+            'categorie.required' => "La catégorie de l'article est requis ",
+            //'file.required' => "Un fichier est requis,attente d'une image  ",
 
 
 
