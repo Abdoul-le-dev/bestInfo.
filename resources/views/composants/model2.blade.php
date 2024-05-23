@@ -3,11 +3,11 @@
     <div class="flex flex-col lg:p-6 w-full ">
 
         <div class="p-6 flex justify-center">
-            <p class="text-white Title_font text-2xl">Macron considers debating Le Pen to avoid European elections fiasco</p>
+            <p class="text-white Title_font text-2xl">{{$post->title}}</p>
         </div>
 
         <div>
-            <iframe class="w-full h-80 lg:min-h-[400px]"  src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <iframe class="w-full h-80 lg:min-h-[400px]"  src="https://www.youtube.com/embed/{{$post->fichier_link}}?si=RPHmhGGITmauQ_52" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
         </div>
         

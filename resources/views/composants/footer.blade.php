@@ -54,7 +54,7 @@
                 </div>
                 <div class="w-full flex flex-row grid grid-cols-2 gap-x-2 lg:gap-x-4 gap-y-4 ">
                     <div><span  class="Placeholder cursor-pointer hover:text-[#4287f5]">Abonnement</span></div>
-                    <div> <span class="Placeholder cursor-pointer hover:text-[#4287f5]">Contact</span></div>
+                    <div> <span class="Placeholder cursor-pointer hover:text-[#4287f5]"><a href="{{route('contact')}}">Contact</a></span></div>
                     <div><span  class="Placeholder cursor-pointer hover:text-[#4287f5]">Condition géneral</span></div>
                     <div><span  class="Placeholder cursor-pointer hover:text-[#4287f5]">Cookies</span></div>
                     <div><span  class="Placeholder cursor-pointer hover:text-[#4287f5]">Mention légales</span></div>

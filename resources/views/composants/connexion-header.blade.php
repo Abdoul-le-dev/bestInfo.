@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="./css/animationlogo.css">
    
     <script src="./js/jquery/jquery.js"></script>
+    <script src="./js/admin.js"></script>
     <script defer src="./js/telechargement.js"></script>
     <script src="./js/js.js"></script>
     <script defer src="./js/model_video.js"></script>

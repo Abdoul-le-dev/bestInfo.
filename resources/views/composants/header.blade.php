@@ -20,18 +20,18 @@
         </div>
 
         <div class="mx-2 hidden lg:flex ">
-            <h2><a href="" class=" font_title_first hover:cusor-pointer  hover:text-[#4287f5]">Newsletter</a></h2>
+            <h2><a href="/" class=" font_title_first hover:cusor-pointer  hover:text-[#4287f5]">Newsletter</a></h2>
         </div>
 
         <div class="flex flex-row items-center ml-4 md:hidden">
             
-            <img src="./data/image/logo.png" alt="logo" class="h-16">
+            <a href="/"><img src="./data/image/logo.png" alt="logo" class="h-16 cursor-pointer"></a>
            
            
            <div class="flex items-center ">
                 <h2 class="font_title_first text-xl Logo">
         
-                    <span class="Logo "><span class="text-[#4287f5] Logo1">Best</span> Infos</span>
+                   <a href="/"> <span class="Logo "><span class="text-[#4287f5] Logo1">Best</span> Infos</span></a>
                 </h2>
            </div>
         </div>   
@@ -40,13 +40,15 @@
 
     <div class="flex flex-row items-center hidden md:flex" >
        <div class="flex flex-row items-center">
-         <img src="./data/image/logo.png" alt="logo" class="h-16">
+        
+         <a href="/"><img src="./data/image/logo.png" alt="logo" class="h-16 cursor-pointer"></a>
+           
        
        </div>
        <div class="flex items-center">
         <h2 class="font_title_first text-xl Logo">
 
-            <span class="Logo2"><span class="text-[#4287f5] Logo1">Best</span> Infos</span></h2>
+           <a href="/"> <span class="Logo2"><span class="text-[#4287f5] Logo1">Best</span> Infos</span></h2></a>
        </div>
     </div>
 
@@ -54,7 +56,10 @@
 
        <div class="flex flex-row mr-2 ">
             <div class="mx-2 hidden lg:flex">
-                <input type="text" placeholder="rechercher" class="p-2 Placeholder border-1 rounded-sm border-black focus:outline-none focus:rounded-sm focus:border-2 focus:border-[#4287f5]">
+                
+            
+
+                <input type="text" id="search-input" placeholder="recherche..." class="p-2 Placeholder border-1 rounded-sm border-black focus:outline-none focus:rounded-sm focus:border-2 focus:border-[#4287f5]">
             </div>
             <div class=" p-1 hidden lg:flex">
                 <img src="../data/icons/search.svg" alt="search" class="h-9 cursor-pointer">
@@ -116,7 +121,21 @@
 <div class="hidden Menu3  fixed z-[400] mt-[75px] transition ease-in-out delay-1000   min-h-48 bg-[#F0F0F0] flex sm:flex-row lg:flex-row justify-between w-full py-4 ">
 
     <div class="flex flex-col lg:flex-row mt-5 justify-between w-full mx-10">
-        <div class="flex flex-col mt-6 px-8 lg:w-1/4 lg:border-r-2  border-[#DCDCDC]">
+        
+        <div class="flex flex-row mt-6 px-8 mr-2 lg:hidden ">
+            <div class="">
+                
+            
+
+                <input type="text" id="search-input" placeholder="recherche..." class="p-2 Placeholder border-1 rounded-sm border-black focus:outline-none focus:rounded-sm focus:border-2 focus:border-[#4287f5]">
+            </div>
+            <div class=" p-1 ">
+                <img src="../data/icons/search.svg" alt="search" class="h-9 cursor-pointer">
+            </div>
+            
+           
+       </div>
+        <div class="Menu23 flex flex-col mt-6 px-8 lg:w-1/4 lg:border-r-2  border-[#DCDCDC]">
 
             <div class="mb-4">
                 <h1 class="font_title_first">RUBRIQUE</h1>
@@ -141,7 +160,7 @@
     
         </div>
     
-        <div class="flex flex-col mt-6 px-8 lg:w-1/4 lg:border-r-2  border-[#DCDCDC]">
+        <div class="Menu24 flex flex-col mt-6 px-8 lg:w-1/4 lg:border-r-2  border-[#DCDCDC]">
     
             <div class="mb-4">
                 <h1 class="font_title_first">FORMAT</h1>
@@ -163,7 +182,7 @@
     
         </div>
     
-        <div class="flex flex-col mt-6 px-8 lg:w-1/4 lg:border-r-2  border-[#DCDCDC] ">
+        <div class="Menu25 flex flex-col mt-6 px-8 lg:w-1/4 lg:border-r-2  border-[#DCDCDC] ">
     
             <div class="mb-4">
                 <h1 class="font_title_first">PARCOURIR</h1>

@@ -104,7 +104,11 @@
         <div class="flex flex-col mt-6 pr-6   lg:border-r-2  border-[#DCDCDC]">
     
             <div class="mb-4">
-                <h1 class="font_title_first hover:text-[#4287f5] cursor-pointer">Mettre à jour article</h1>
+                <h1 class="font_title_first hover:text-[#4287f5] cursor-pointer">
+                    <a href="{{route('Article_en_avant')}}">
+                        Article à mettre en avant
+                    </a>
+                </h1>
             </div>
             
     
@@ -127,15 +131,7 @@
         </div>
 
         
-        <div class="flex flex-col mt-6 pr-6   lg:border-r-2  border-[#DCDCDC] ">
-    
-            <div class="mb-4">
-                <h1 class="font_title_first hover:text-[#4287f5] cursor-pointer">Contenu a mettre en avant</h1>
-            </div>
-           
-           
-    
-        </div>
+     
         <div class="flex flex-col mt-6 pr-6   lg:border-r-2  border-[#DCDCDC] ">
     
             <div class="mb-4">

@@ -16,13 +16,14 @@
    
    
     <script defer src="./js/js.js"></script>
+    <script defer src="./js/search.js"></script>
     <script defer src="./js/gestion.js"></script>
     <script defer src="./js/model_video.js"></script>
     <script defer src="./js/animationslider.js"></script>
     <script defer src="./js/model1.js"></script>
     <script defer src="./js/model2.js"></script>
     <script defer src="./js/model3.js"></script>
-    
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">  
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">

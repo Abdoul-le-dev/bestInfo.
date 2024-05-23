@@ -4,11 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Post as RequestsPost;
 use App\Http\Requests\PostUpdate;
+use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Detail;
+use App\Models\Details;
+use App\Models\articleEnAvant;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Models\Category;
-use App\Models\Details;
+
 use App\Models\PostDetail;
 
 class PostController extends Controller
@@ -22,9 +26,111 @@ class PostController extends Controller
         $post = Post::latest()->first();
         
         $posts_lue = Post::all();
+        
 
-        return view('Dashboard.dashboard',compact('post','posts_lue'));
+       // $tab = $this->article_similaire();
+               
+        
+        
+       /* $count= 0;
+        
+        foreach( $tab as $tabs)
+        {
+           
+            $post = Post::where('id',$tabs)->first();
+            $tabs_data[$count] =$post;
+            $count++;
+        }*/
+        
+        return view('Dashboard.dashboard',compact('post','posts_lue',));
 
+    }
+    public function article_data(Request $request)
+    {
+        $id = $request->input('id');
+        $post = Post::where('id',$id)->get()->first();
+      //  dd($post);
+
+        if($post->type_article == 'Image')
+        {
+            return view('Dashboard.dashboard',compact('post'));
+        }
+        if($post->type_article == 'Poadcast' || $post->type_article == 'mixte'  )
+        {
+            return view('Dashboard.poadcast',compact('post'));
+        }
+        if($post->type_article == 'Video')
+        {
+           return view('Dashboard.video',compact('post'));
+        }
+        
+
+    }
+    public function article_similaire()
+    {
+        $data = Post::latest()->first();
+        $data_avant = articleEnAvant::latest()->get();
+        $count = 0;
+        $data_table = [];
+    
+        // Récupérer les articles similaires du post le plus récent
+        if ($data) {
+            $data_details = Detail::where('id', $data->id)->get(); // Récupérer tous les détails associés au post
+    
+            if ($data_details->isNotEmpty()) {
+                $this->addSimilarPostsToTable($data_details, $data_table, $count);
+            }
+        }
+    
+        // Récupérer les articles en avant
+        if ($data_avant) {   
+            $article_count = articleEnAvant::count();
+            if ($article_count > 0) {
+                $article_en_avant = $article_count <= 3 ? articleEnAvant::all() : articleEnAvant::latest()->take(3)->get();
+                foreach ($article_en_avant as $datas) {
+
+                   
+                        $data_details = Detail::where('id', $datas->id_article)->get(); // Récupérer tous les détails associés au post
+    
+                        $this->addSimilarPostsToTable($data_details, $data_table, $count);
+
+                    
+                    
+                        
+                    
+                   
+                }
+            }
+        }
+    
+        // Récupérer les articles similaires pour chaque élément de $data_table
+        foreach ($data_table as $data_id) {
+            $data_details = Detail::where('post_id', $data_id)->get();
+            if ($data_details->isNotEmpty()) {
+                $this->addSimilarPostsToTable($data_details, $data_table, $count);
+            }
+        }
+    
+        // Retourner la réponse ou afficher les données comme nécessaire
+        return response()->json(["data" => $data_table ]);
+    }
+    
+    private function addSimilarPostsToTable($data_details, &$data_table, &$count)
+    {
+        foreach ($data_details as $detail) {
+            if ($detail->post_similaire_1 != null && !in_array($detail->post_similaire_1, $data_table)) {
+                $count++;
+                $data_table[] = $detail->post_similaire_1;
+            }
+            if ($detail->post_similaire_2 != null && !in_array($detail->post_similaire_2, $data_table)) {
+                $count++;
+                $data_table[] = $detail->post_similaire_2;
+            }
+            if ($detail->post_similaire_3 != null && !in_array($detail->post_similaire_3, $data_table)) {
+                $count++;
+                $data_table[] = $detail->post_similaire_3;
+            }
+        }
     }
 
     /**
@@ -75,10 +181,25 @@ class PostController extends Controller
         if($format =='Video')
         {   
            
-
+            if (preg_match('/youtu\.be\/([^\?]*)/', $video_link, $matches)) {
+                $video_id = $matches[1];
+            }
+            // Match long URL format (youtube.com)
+            elseif (preg_match('/youtube\.com\/.*v=([^&]*)/', $video_link, $matches)) {
+                $video_id = $matches[1];
+            }
+            // Match embed URL format
+            elseif (preg_match('/youtube\.com\/embed\/([^&]*)/', $video_link, $matches)) {
+                $video_id = $matches[1];
+            } else {
+                // If no match is found, return null or handle the error appropriately
+                return null;
+            }
             // Extraire l'identifiant de la vidéo de l'URL
-            preg_match('/youtu\.be\/([^\?]*)/', $video_link, $matches);
-            $video_id = $matches[1];
+           // preg_match('/youtu\.be\/([^\?]*)/', $video_link, $matches);
+
+            //$video_id = $matches[1];
+            
             $video_id = "https://www.youtube-nocookie.com/embed/".$video_id."?si=sutV20EDxIDLzQLy&amp;controls=0&amp;start=68";
             
             Details::create([

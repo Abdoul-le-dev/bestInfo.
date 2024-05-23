@@ -1,83 +1,13 @@
 @extends('composants.connexion-header')
 
 @section('page')
+
+    
 <div class="overflow-x-hidden bg-gray-100 shadow min-h-[90vh]">
    
 
     <div class="px-6 py-8">
-        <div class="container flex flex-col lg:flex-row justify-between mx-auto">
-            <div class=" w-full lg:hidden -mx-8 lg:block">
-
-                <div class="px-8 mt-10">
-                    <h1 class="mb-4 text-xl font-bold text-gray-600 font_title_first">Nombre d'article Publier</h1>
-                    <div class="flex flex-col max-w-sm px-4 py-6 mx-auto bg-white rounded-lg shadow-md">
-                        
-                        <ul>
-                            <p class="mt-2 font_title_first text-black  text-base ">Total :
-                                <a class="Total Placeholder font_title_first text-base font-bold text-[#4287f5]"></a>
-                            </p>
-                           
-                        
-                            <p class="mt-2 font_title_first text-black  text-base">Par Categorie</p>
-                            <ul class="Categorie_data">
-
-                            </ul>
-                            <p class="mt-2 font_title_first text-black  text-base">Par Type</p>
-                            <ul class="Type_data">
-
-                            </ul>
-                        <ul>
-                           
-                       
-                        
-                                
-                            
-                           
-                            
-                            
-                        </ul>
-                    </div>
-                </div>
-               
-                <div class="px-8 mt-10">
-                    <h1 class="mb-4 text-xl font-bold text-gray-600 font_title_first">Categories</h1>
-                    <div class="flex flex-col max-w-sm px-4 py-6 mx-auto bg-white rounded-lg shadow-md">
-                        <ul>
-                            @foreach ($categories as $categorie )
-
-                            <li><a href="#" class="mx-1 font_title_first font-normal text-[#4287fc] hover:text-gray-600 hover:underline">-
-                                {{$categorie->name}}
-                            </a>
-                        </li>
-                                
-                            @endforeach
-                           
-                            
-                            
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="px-8 mt-10">
-                    <h1 class="mb-4 text-xl font-bold text-gray-600 font_title_first">Article mis en avant</h1>
-                    <div class="flex flex-col max-w-sm px-4 py-6 mx-auto bg-white rounded-lg shadow-md">
-                        <ul>
-                            @foreach ($article_avant as $article)
-
-                            <li><a href="#" class="mx-1 font_title_first font-normal text-[#4287fc] hover:text-gray-600 hover:underline">-
-                                {{$article->id_article}}
-                            </a>
-                        </li>
-                                
-                            @endforeach
-                           
-                            
-                            
-                        </ul>
-                    </div>
-                </div>
-                
-            </div>
+        <div class="container flex justify-between mx-auto">
             <div class="w-full lg:w-8/12">
                 @if (session('success'))
                 <div class="bg-green-100 border-t-4 border-green-500 rounded-b text-green-900 px-4 py-3 shadow-md mb-5" role="alert">
@@ -102,9 +32,9 @@
                 </div>
                 @endif
                 <div class="flex items-center justify-between">
-                    <h1 class="font_title_first text-xl">Liste des articles</h1>
+                    <h1 class="font_title_first text-xl">Liste des articles mis en avant</h1>
                 </div>
-               @forelse ($posts as $post )
+               @forelse ($data as $post )
 
                <div class="mt-6">
                 <div class="max-w-4xl px-10 py-6 mx-auto bg-white rounded-lg shadow-md">
@@ -133,7 +63,7 @@
                    
                @endforelse
 
-               {{---<div class="mt-8">
+               <div class="mt-8">
                 <div class="flex">
                     <a href="#" class="px-3 py-2 mx-1 font-medium text-gray-500 bg-white rounded-md cursor-not-allowed">
                         previous
@@ -155,44 +85,13 @@
                         Next
                     </a>
                 </div>
-               </div>--}}
+              </div>
                
                
                 
                 
             </div>
-            <div class=" hidden lg:block lg:w-4/12 -mx-8 lg:block">
-
-                <div class="px-8 mt-10">
-                    <h1 class="mb-4 text-xl font-bold text-gray-600 font_title_first">Nombre d'article Publier</h1>
-                    <div class="flex flex-col max-w-sm px-4 py-6 mx-auto bg-white rounded-lg shadow-md">
-                        
-                        <ul>
-                            <p class="mt-2 font_title_first text-black  text-base ">Total :
-                                <a class="Total Placeholder font_title_first text-base font-bold text-[#4287f5]"></a>
-                            </p>
-                           
-                        
-                            <p class="mt-2 font_title_first text-black  text-base">Par Categorie</p>
-                            <ul class="Categorie_data">
-
-                            </ul>
-                            <p class="mt-2 font_title_first text-black  text-base">Par Type</p>
-                            <ul class="Type_data">
-
-                            </ul>
-                        <ul>
-                           
-                       
-                        
-                                
-                            
-                           
-                            
-                            
-                        </ul>
-                    </div>
-                </div>
+            <div class="hidden w-4/12 -mx-8 lg:block">
                
                 <div class="px-8 mt-10">
                     <h1 class="mb-4 text-xl font-bold text-gray-600 font_title_first">Categories</h1>
@@ -213,29 +112,14 @@
                     </div>
                 </div>
 
-                <div class="px-8 mt-10">
-                    <h1 class="mb-4 text-xl font-bold text-gray-600 font_title_first">Article mis en avant</h1>
-                    <div class="flex flex-col max-w-sm px-4 py-6 mx-auto bg-white rounded-lg shadow-md">
-                        <ul>
-                            @foreach ($article_avant as $article)
-
-                            <li><a href="#" class="mx-1 font_title_first font-normal text-[#4287fc] hover:text-gray-600 hover:underline">-
-                                Article n°{{$article->id_article}}
-                            </a>
-                        </li>
-                                
-                            @endforeach
-                           
-                            
-                            
-                        </ul>
-                    </div>
-                </div>
+               
                 
             </div>
-            
         </div>
     </div>
     
 </div>
+
+   
+
 @endsection

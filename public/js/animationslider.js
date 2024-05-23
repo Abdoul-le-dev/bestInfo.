@@ -65,7 +65,7 @@ let items = document.querySelectorAll(' .slider .item');
    
    
     
-   
+
    
 
     function viewCategorie()

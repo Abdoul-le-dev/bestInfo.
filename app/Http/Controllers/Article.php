@@ -18,6 +18,61 @@ class Article extends Controller
         $categories = Category::all();
         return view('Admin.custom_article',compact('categories'));
     }
+    public function Article_avant()
+    {
+        $posts = articleEnAvant::latest()->get();
+        $categories = Category::all();
+        $article_avant = articleEnAvant::all();
+
+        $data =[];
+        foreach( $posts as $post )
+        {
+          
+            $posts_get = Post::where('id',$post->id_article)->first();
+            $data[]=$posts_get;
+        }
+
+        return view('Admin.article_en_avant',compact('data','categories','article_avant'));
+
+    }
+    public function article_categorie(Request $request)
+    {
+        $id = $request->input('id');
+        $posts = Post::where('category_id',$id)->get();
+
+        return view('Dashboard.recherche', compact('posts'));
+
+    }
+    public function article_categories(Request $request)
+    {
+        $id = $request->input('id');
+        $categories = Category::all();
+        $article_avant = articleEnAvant::all();
+ 
+        $posts = Post::where('category_id',$id)->get();
+
+        return view('Admin.categorielist', compact('posts','categories','article_avant'));
+
+    }
+    
+    public function search(Request $request)
+{
+    // Récupérer le terme de recherche depuis la requête
+    $searchTerm = $request->input('query');
+   
+
+    // Recherche des articles avec le titre ou la description correspondant au terme de recherche
+    $posts = Post::where('title', 'like', '%' . $searchTerm . '%')
+                 ->with('category', 'user')
+                 ->get();
+    
+    // Retourner les résultats au format JSON
+    return response()->json(['posts' => $posts, 'searchTerm' => $searchTerm]);
+}
+
+    
+    
+   
 
     public function view_article(Request $request)
     {
@@ -128,23 +183,34 @@ class Article extends Controller
      
      try{
      $article = Post::findOrFail($id);
+     $article_detail = Detail::where('id',$id)->first();
+     $article_avant = articleEnAvant::where('id_article',$id)->first();
      // Catégorie trouvée, procédez à vos opérations ici
      } catch (ModelNotFoundException $e) {
      // Gérer l'exception ici, par exemple, rediriger l'utilisateur vers une page d'erreur
      return redirect()->route('404')->with('error', 'L\'article demandée n\'existe pas.');
     }
     $article->delete();
+    if( $article_detail)
+    {
+        $article_detail->delete();
+    }
+    if( $article_avant)
+    {
+        $article_avant->delete();
+    }
     $message = 'L\'article a été supprimé avec succes';
 
     $posts = Post::all();
     $categories = Category::all();
+    $article_avant = articleEnAvant::all();
        
     
 
 
    
      
-    return view('Admin.dashboard',compact('posts','categories'));
+    return view('Admin.dashboard',compact('posts','categories','article_avant'));
    }
 
    public function update(Request $request)
@@ -293,7 +359,7 @@ class Article extends Controller
         }
     }
 
-    public function article_similaire()
+   /* public function article_similaires()
     {
         $data = Post::latest()->first();
         $data_avant = articleEnAvant::latest()->first();
@@ -356,12 +422,150 @@ class Article extends Controller
             } 
 
         }
+        $data_all = Post::all();
 
-        if($count > 3)
-        {
-            
+        
+            for($i = 0; $i< $data_table.length; $i++ )
+            {   
+                $data_details = Detail::find($data_table[$i]);
 
+                foreach($data_details  as $datas)
+                {
+                    if($datas->post_similaire_1 != null)
+                    {  
+                        $view =0;
+                        foreach($data_table as $data)
+
+                        {
+                            if($data != $datas->post_similaire_1)
+                            {
+                               $view++; 
+                            }
+
+                        }
+                        if($view ==0)
+                        {
+                            $count++;
+                             $data_table[] = $datas->post_similaire_1;
+                        }
+                    }
+                    
+                    if($datas->post_similaire_2 != null)
+                    {  
+                        $view =0;
+                        foreach($data_table as $data)
+
+                        {
+                            if($data != $datas->post_similaire_2)
+                            {
+                               $view++; 
+                            }
+
+                        }
+                        if($view ==0)
+                        {
+                            $count++;
+                             $data_table[] = $datas->post_similaire_2;
+                        }
+                    }
+                    
+                    if($datas->post_similaire_3 != null)
+                    {  
+                        $view =0;
+                        foreach($data_table as $data)
+
+                        {
+                            if($data != $datas->post_similaire_3)
+                            {
+                               $view++; 
+                            }
+
+                        }
+                        if($view ==0)
+                        {
+                            $count++;
+                             $data_table[] = $datas->post_similaire_3;
+                        }
+                    }
+                    
+                }
+            }
+
+        
+    }*/
+    public function article_similaire()
+    {
+        $data = Post::latest()->first();
+        $data_avant = articleEnAvant::latest()->get();
+        $count = 0;
+        $data_table = [];
+    
+        // Récupérer les articles similaires du post le plus récent
+        if ($data) {
+            $data_details = Detail::where('id', $data->id)->get(); // Récupérer tous les détails associés au post
+    
+            if ($data_details->isNotEmpty()) {
+                $this->addSimilarPostsToTable($data_details, $data_table, $count);
+            }
+        }
+    
+        // Récupérer les articles en avant
+        if ($data_avant) {   
+            $article_count = articleEnAvant::count();
+            if ($article_count > 0) {
+                $article_en_avant = $article_count <= 3 ? articleEnAvant::all() : articleEnAvant::latest()->take(3)->get();
+                foreach ($article_en_avant as $datas) {
+
+                   
+                        $data_details = Detail::where('id', $datas->id_article)->get(); // Récupérer tous les détails associés au post
+    
+                        $this->addSimilarPostsToTable($data_details, $data_table, $count);
+
+                    
+                    
+                        
+                    
+                   
+                }
+            }
+        }
+    
+        // Récupérer les articles similaires pour chaque élément de $data_table
+        foreach ($data_table as $data_id) {
+            $data_details = Detail::where('post_id', $data_id)->get();
+            if ($data_details->isNotEmpty()) {
+                $this->addSimilarPostsToTable($data_details, $data_table, $count);
+            }
+        }
+    
+        // Retourner la réponse ou afficher les données comme nécessaire
+        return response()->json(["data" => $data_table ]);
+    }
+    
+    private function addSimilarPostsToTable($data_details, &$data_table, &$count)
+    {
+        foreach ($data_details as $detail) {
+            if ($detail->post_similaire_1 != null && !in_array($detail->post_similaire_1, $data_table)) {
+                $count++;
+                $data_table[] = $detail->post_similaire_1;
+            }
+            if ($detail->post_similaire_2 != null && !in_array($detail->post_similaire_2, $data_table)) {
+                $count++;
+                $data_table[] = $detail->post_similaire_2;
+            }
+            if ($detail->post_similaire_3 != null && !in_array($detail->post_similaire_3, $data_table)) {
+                $count++;
+                $data_table[] = $detail->post_similaire_3;
+            }
         }
     }
+
+    public function article(Request $request)
+    {
+        $id = $request->input('id');
+        $post = Post::where('id',$id)->first();
+        return response()->json(["data" => $post]);
+    }
+    
 }
   

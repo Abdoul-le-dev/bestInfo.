@@ -173,17 +173,22 @@ document.addEventListener('DOMContentLoaded', function () {
         var liElement = document.createElement('li');
 
         // Ajouter les classes à l'élément <li>
+        var url = '/sectioncategorie?id='+ category.id;
+        var aElement = document.createElement('a');
+        aElement.href = url;
+        
         liElement.classList.add('mx-2', 'font_title_first', 'cursor-pointer', 'uppercase', 'hover:border-t-2', 'p-1', 'border-[#4287f5]', 'rounded-lg', 'whitespace-nowrap');
-
+        liElement.appendChild(aElement);
+        aElement.classList.add('mx-2', 'font_title_first', 'cursor-pointer', 'uppercase', 'hover:border-t-2', 'p-1', 'border-[#4287f5]', 'rounded-lg', 'whitespace-nowrap');
+       
         // Ajouter le texte de la catégorie à l'élément <li>
         if(parentElement)
         {
-                liElement.textContent = category.name; // Supposons que le nom de la catégorie est stocké dans la propriété "nom"
+              aElement.textContent = category.name; // Supposons que le nom de la catégorie est stocké dans la propriété "nom"
 
                 // Ajouter l'élément <li> en tant qu'enfant de l'élément parent
                 parentElement.appendChild(liElement);
-                liElement.addEventListener('click', function() {
-                    CategorieRedirect(category.id); });
+                
         }
           //  console.log('Catégorie cliquée :', category.name);
        
@@ -195,7 +200,7 @@ function CategorieRedirect(id)
 {
     $.ajax({
 
-        url: '/redirect',
+        url: '/sectioncategorie',
         type: 'get',
         data: {
            id
