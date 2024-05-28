@@ -3,6 +3,8 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Article;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\Controllers;
 use App\Http\Controllers\PostController;
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
@@ -25,6 +27,7 @@ Route::get('/publier-article', [Article::class,'view_section'])->name('session')
 Route::post('/publier-article',[PostController::class,'create'])->name('create');
 
 Route::get('/article', [Article::class,'view_article'])->name('article');
+Route::get('/articles', [Article::class,'view_articles'])->name('articles');
 Route::get('/update', [Article::class,'update'])->name('update');
 Route::post('/update', [PostController::class,'updates'])->name('updates');
 
@@ -84,6 +87,17 @@ Route::get('/categorie_article', [Article::class,'article_categories'])->name('a
 
 ///404
 Route::get('/404', [AdminController::class, '404'])->name('404');
+
+//Paperasse
+Route::get('/cookie', [Controllers::class, 'cookie'])->name('cookie');
+Route::get('/condition-générale', [Controllers::class, 'condition'])->name('condition');
+Route::get('/politique-confidentialite', [Controllers::class, 'politique'])->name('politique');
+Route::get('/mention-legale', [Controllers::class, 'mention'])->name('mention');
+Route::get('/a-propos', [Controllers::class, 'propos'])->name('propos');
+
+//article en avant 
+Route::post('/avant', [Controllers::class, 'article_avant'])->name('en_avant');
+Route::post('/delete-avant', [Controllers::class, 'retirer_article_avant'])->name('retirer-article-avant');
 
 
 

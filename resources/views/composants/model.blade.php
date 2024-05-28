@@ -16,6 +16,7 @@
    
    
     <script defer src="./js/js.js"></script>
+    <script defer src="./js/social.js"></script>
     <script defer src="./js/search.js"></script>
     <script defer src="./js/gestion.js"></script>
     <script defer src="./js/model_video.js"></script>

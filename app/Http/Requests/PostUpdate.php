@@ -23,8 +23,8 @@ class PostUpdate extends FormRequest
     {
         
         return [
-            'titre' => 'required|min:8',
-            'description' => 'required|min:100',
+            'titre' => 'text',
+            'description' => 'text',
             'arctile1' => 'number',
             'arctile2' => 'number',
             'arctile3' => 'number',
@@ -35,21 +35,7 @@ class PostUpdate extends FormRequest
     }
     public function messages()
     {
-        return [
-            'titre.required' => "Le titre de l'article est requis ",
-            'titre.min' => "Le titre de l'article doit contenir au moins 8 caractère ",
-            'description.required' => "Le contenu de l'article est requis ",
-            'description.min' => "Le contenu de l'article doit contenir au moins 100 caractère ",
-            'article1.number' => "Le champs article lié doit contenu que des chiffres comme ID ",
-            'article2.number' => "Le champs article lié doit contenu que des chiffres comme ID ",
-            'article3.number' => "Le champs article lié doit contenu que des chiffres comme ID ",
-            'categorie.required' => "La catégorie de l'article est requis ",
-            'format.required' => "Le format est requis ",
-
-
-
-
-        ];
+        return [ ];
     }
     protected function prepareForValidation()
     {

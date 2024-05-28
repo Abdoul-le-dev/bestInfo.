@@ -16,7 +16,7 @@
         </div >
         
         <div class="mx-2 hidden md:flex ">
-            <h2><a href="" class="pr-2 font_title_first lg:border-r-2 border-black hover:cusor-pointer hover:border-[#4287f5] hover:text-[#4287f5]">Fil d'actualité</a></h2>
+            <h2><a href="/" class="pr-2 font_title_first lg:border-r-2 border-black hover:cusor-pointer hover:border-[#4287f5] hover:text-[#4287f5]">Fil d'actualité</a></h2>
         </div>
 
         <div class="mx-2 hidden lg:flex ">

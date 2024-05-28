@@ -44,6 +44,17 @@
                     <div class="mt-2"><a href="{{ route('article',['id'=> $post->id])}}" class="text-xl font-normal text-black hover:underline font_title_first">{{ $post->title}}</a>
                         <p class="mt-2 text-gray-600 Placeholder">{{ Str::limit($post->description, 220) }}</p>
                     </div>
+                    <div class="mt-2 flex :flex-row justify-between items-center">
+                            
+                        <form action="{{route('retirer-article-avant')}}" method="post">
+                            @csrf
+                            <input type="text" value="{{$post->id}}" name="id" class="hidden">
+                            <button type="submit" class="rounded bg-red-500 border-red-500  p-2 text-white font_title_first text-xs mb-2">
+                                Retirer de la liste
+   
+                            </button>
+                        </form>
+                     </div>
                     <div class="flex items-center justify-between mt-4"><a href="{{ route('article',['id'=> $post->id])}}"
                             class="text-blue-500 hover:underline font_title_first">Read more</a>
                         <div><a href="#" class="flex items-center"><img

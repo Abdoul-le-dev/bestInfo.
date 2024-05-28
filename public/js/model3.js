@@ -19,20 +19,29 @@ let updateTimer;
 
 function getData_lastest() {
     var data_lastest = localStorage.getItem('data_lastest');
-    if (data_lastest == null) {
+    if (data_lastest === null || data_lastest === 'undefined') {
         return [];
     } else {
-        return JSON.parse(data_lastest);
+        try {
+            return JSON.parse(data_lastest);
+        } catch (e) {
+            console.error('Erreur lors du parsing de JSON:', e);
+            return [];
+        }
     }
 }
+
 function getCategorie() {
     var categorie = localStorage.getItem('categorie');
-    if (categorie == null) {
+    if (categorie === null || categorie === 'undefined') {
         return [];
-
-    }
-    else {
-        return JSON.parse(categorie);
+    } else {
+        try {
+            return JSON.parse(categorie);
+        } catch (e) {
+            console.error('Erreur lors du parsing de JSON:', e);
+            return [];
+        }
     }
 }
 

@@ -8,7 +8,7 @@ use App\Models\Post;
 use App\Models\Detail;
 use App\Models\articleEnAvant;
 use App\Models\Category;
-use App\Models\PostDetail;
+use App\Models\Details;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class Article extends Controller
@@ -20,7 +20,7 @@ class Article extends Controller
     }
     public function Article_avant()
     {
-        $posts = articleEnAvant::latest()->get();
+        $posts = articleEnAvant::latest()->take(3)->get();
         $categories = Category::all();
         $article_avant = articleEnAvant::all();
 
@@ -79,6 +79,12 @@ class Article extends Controller
         $id = $request->input('id');
         $post = Post::where('id',$id)->first();
         return view('Admin.afficher_article', compact('post'));
+    }
+    public function view_articles(Request $request)
+    {
+        $id = $request->input('id');
+        $post = Post::where('id',$id)->first();
+        return view('Dashboard.article', compact('post'));
     }
     public function view_update(Request $request)
     {
@@ -218,7 +224,7 @@ class Article extends Controller
     $id = $request->input('id');
 
      $article = Post::findOrFail($id);
-     $article_similaire = PostDetail::findOrFail($id);
+     $article_similaire = Detail::where('post_id',$id)->first();
      $categories = Category::all();
      
     return view('Admin.update_article',compact('article','article_similaire','categories'));
@@ -502,7 +508,7 @@ class Article extends Controller
     
         // Récupérer les articles similaires du post le plus récent
         if ($data) {
-            $data_details = Detail::where('id', $data->id)->get(); // Récupérer tous les détails associés au post
+            $data_details = Detail::where('post_id', $data->id)->get(); // Récupérer tous les détails associés au post
     
             if ($data_details->isNotEmpty()) {
                 $this->addSimilarPostsToTable($data_details, $data_table, $count);

@@ -1,4 +1,5 @@
 <footer class="bg-slate-100 ">
+    
     <div class="   min-h-48  flex sm:flex-row lg:flex-row justify-between w-full py-4 ">
 
         <div class="flex flex-col lg:flex-row justify-between w-full mx-10 px-1 lg:px-8">
@@ -53,12 +54,12 @@
                     <h1 class="font_title_first">Pratique</h1>
                 </div>
                 <div class="w-full flex flex-row grid grid-cols-2 gap-x-2 lg:gap-x-4 gap-y-4 ">
-                    <div><span  class="Placeholder cursor-pointer hover:text-[#4287f5]">Abonnement</span></div>
+                    <div><span  class="Placeholder cursor-pointer hover:text-[#4287f5]"><a href="{{route('propos')}}">A propos</a></span></div>
                     <div> <span class="Placeholder cursor-pointer hover:text-[#4287f5]"><a href="{{route('contact')}}">Contact</a></span></div>
-                    <div><span  class="Placeholder cursor-pointer hover:text-[#4287f5]">Condition géneral</span></div>
-                    <div><span  class="Placeholder cursor-pointer hover:text-[#4287f5]">Cookies</span></div>
-                    <div><span  class="Placeholder cursor-pointer hover:text-[#4287f5]">Mention légales</span></div>
-                      <div><span  class="Placeholder cursor-pointer hover:text-[#4287f5]">Politique de confidentialité</span></div>
+                    <div><span  class="Placeholder cursor-pointer hover:text-[#4287f5]"><a href="{{route('condition')}}">Condition géneral</a></span></div>
+                    <div><span  class="Placeholder cursor-pointer hover:text-[#4287f5]"><a href="{{route('cookie')}}">Cookies</a></span></div>
+                    <div><span  class="Placeholder cursor-pointer hover:text-[#4287f5]"><a href="{{route('mention')}}">Mention légales</a></span></div>
+                      <div><span  class="Placeholder cursor-pointer hover:text-[#4287f5]"><a href="{{route('politique')}}">Politique de confidentialité</a></span></div>
                     
                        
                    

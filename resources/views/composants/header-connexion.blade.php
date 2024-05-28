@@ -45,7 +45,7 @@
        <div class="flex items-center">
         <h2 class="font_title_first text-xl Logo">
 
-            <span class="Logo2"><span class="text-[#4287f5] Logo1">Best</span> Infos</span></h2>
+          <a href="/">  <span class="Logo2"><span class="text-[#4287f5] Logo1">Best</span> Infos</span></h2></a>
        </div>
     </div>
 
@@ -123,7 +123,7 @@
         <div class="flex flex-col mt-6 pr-6  lg:border-r-2  border-[#DCDCDC] ">
     
             <div class="mb-4">
-                <h1 class="font_title_first hover:text-[#4287f5] cursor-pointer" >Supprimer article</h1>
+                <h1 class="font_title_first hover:text-[#4287f5] cursor-pointer" ><a onclick="Pop()">Mettre article en avant</a></h1>
             </div>
            
            
@@ -143,4 +143,49 @@
         </div>
     </div>
 
+</div>
+
+<div class="w-full flex justify-center items-center ">
+    <div class="Pop hidden   absolute bg-indigo-50 p-10 top-32  shadow-2xl flex flex-col justify-center items-center " style="width: 400px">
+
+        <div class="static flex flex-col justify-center items-center w-full">
+    
+        <img src="data/icons/news.png" alt="" class="mr-2 ml-3 h-10 w-10 my-4 cursor-pointer" style="" >
+        <h3 class="text-base font_title_first m-2 ">Mettre article en avant</h3>
+        </div>
+        <div class="w-full">
+    
+            <form action="{{ route('en_avant') }}" method="post" >
+    
+                @csrf
+                @method('post')
+    
+    
+                <div class="flex flex-row p-3 flex-wrap justify-center  ">
+                    <div class="flex flex-row mx-4 my-4 w-full justify-center">
+                        <label for="categorie" class="Placeholder ml-2 p-2 justify-center text-nowrap " >Id Article<span class="mx-1"></span></label>
+                        <input type="text" name="id_article" id="nom" class="Placeholder border-2 p-2 focus:outline-none focus:border-2 focus:border-blue-400 " >
+                    </div>
+    
+    
+                   
+    
+                </div>
+    
+    
+                <div class="flex justify-center mb-4">
+                    <div class="flex justify-between  mt-4  w-full">
+    
+                        <button type="submit" class="font_title_first text-base bg-green-200 p-3 rounded-sm hover:bg-green-500">Mettre en avant </button>
+                        <a onclick="PopR()" class="font_title_first text-base bg-red-200 p-3 rounded-sm hover:bg-red-400 hover:cursor-pointer">Annuler </a>
+    
+    
+                    </div>
+                </div>
+    
+    
+            </form>
+    
+        </div>
+    </div>
 </div>

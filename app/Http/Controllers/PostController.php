@@ -26,6 +26,20 @@ class PostController extends Controller
         $post = Post::latest()->first();
         
         $posts_lue = Post::all();
+
+        if($post->type_article == 'Image')
+        {
+            return view('Dashboard.dashboard',compact('post','posts_lue',));
+        }
+        if($post->type_article == 'Video')
+        {
+            return view('Dashboard.video',compact('post','posts_lue',));
+        }
+        if($post->type_article == 'Poadcast' || $post->type_article == 'Mixte' )
+        {
+            return view('Dashboard.poadcast',compact('post','posts_lue',));
+        }
+
         
 
        // $tab = $this->article_similaire();
@@ -42,7 +56,7 @@ class PostController extends Controller
             $count++;
         }*/
         
-        return view('Dashboard.dashboard',compact('post','posts_lue',));
+       
 
     }
     public function article_data(Request $request)
@@ -263,52 +277,132 @@ class PostController extends Controller
 
     public function updates(PostUpdate $request)
     {
-     $titre = $request->titre;
-     $contenu = $request->description;
-    
-     $article1 = $request->article1;
-     $article2 = $request->article2;
-     $article3 = $request->article3;
-     $format = $request->format;
-    
      
-     
-     $tab = [
-         'title' => $titre,
-         'description' => $contenu,
-         'type_article' =>$format
- 
-     ];
-     if($request->file != null)
-     {
-        $fichier = $request->file->store('fichier');
+        $titre = $request->titre;
+        $contenu = $request->description;
+       // $categorie = $request->categorie;
+        $article1 = $request->article1;
+        $article2 = $request->article2;
+        $article3 = $request->article3;
+        $format = $request->format;
+        $video_link = $request->video_link ;
+       
+        $tab = [ ];
+        $tabs = [];
+        $post_id = $request->input('id');
 
-        $tab = array_merge($tab,
-        ['fichier' => $fichier,]
-     );
-
-     }
-
-     $id = $request->input('id');
-
-     $article = Post::findOrFail($id);
-
-     $article->update($tab);
-     $posts = Post::all();
-     $categories = Category::all();
+        if($titre)
+        {
+            $tab = array_merge($tab,['title' => $titre]);
+        }
+        if($contenu)
+        {
+            $tab = array_merge($tab,['description' => $contenu]);
+        }
         
-     $posts_lue = Post::all();
 
-     
-    
       
-     return view('Admin.dashboard',compact('posts','posts_lue','categories'));
+        
+        if($format =='Image')
+        {
+            $fichier = $request->file->store('fichier');
+
+            $tab = array_merge($tab,['fichier_image' => $fichier]);
+            
+        }
+        if($format =='Video')
+        {   
+           
+            if (preg_match('/youtu\.be\/([^\?]*)/', $video_link, $matches)) {
+                $video_id = $matches[1];
+            }
+            // Match long URL format (youtube.com)
+            elseif (preg_match('/youtube\.com\/.*v=([^&]*)/', $video_link, $matches)) {
+                $video_id = $matches[1];
+            }
+            // Match embed URL format
+            elseif (preg_match('/youtube\.com\/embed\/([^&]*)/', $video_link, $matches)) {
+                $video_id = $matches[1];
+            } else {
+                // If no match is found, return null or handle the error appropriately
+                return null;
+            }
+            // Extraire l'identifiant de la vidéo de l'URL
+           // preg_match('/youtu\.be\/([^\?]*)/', $video_link, $matches);
+
+            //$video_id = $matches[1];
+            
+            $video_id = "https://www.youtube-nocookie.com/embed/".$video_id."?si=sutV20EDxIDLzQLy&amp;controls=0&amp;start=68";
+            
+          
+            $tab = array_merge($tab,['fichier_link' => $video_id]);
+
+        }
+        if($format =='Poadcast')
+        {
+            $fichier = $request->file->store('fichier_audio');
+            
+           
+            $tab = array_merge($tab,['fichier_audio' => $fichier]);
+
+           
+        }
+        if($format =='Mixte')
+        {
+            $fichier = $request->file->store('fichier_audio');
+            $fichiers = $request->file->store('fichier');
+            
+            
+           
+            $tab = array_merge($tab,['fichier_audio' => $fichier]);
+            $tab = array_merge($tab,['fichier_image' => $fichiers]);
+
+
+           
+        }
+        $post_detail = Detail::where('post_id',$post_id)->first();
+
+        if($article1)
+        {
+            if($post_detail->post_similaire_1 != $article1)
+            {
+                $tabs = array_merge($tabs,['post_similaire_1' => $article1 ]);
+            }
+
+        }
+        if($article2)
+        {
+            if($post_detail->post_similaire_2 != $article2)
+            {
+                $tabs = array_merge($tabs,['post_similaire_2' => $article2 ]);
+            }
+
+        }
+        if($article3)
+        {
+            if($post_detail->post_similaire_3 != $article3)
+            {
+                $tabs = array_merge($tabs,['post_similaire_3' => $article3 ]);
+            }
+
+        }
+
+        $article = Post::findOrFail($post_id);
+
+        $article->update($tab);
+        $post_detail->update($tabs);
+
+        return redirect()->route('dashboard')->with('sucess','L\'article à été mise a jour avec succes');
+
+
+       
+        
+        
+        
     }
  
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    
     public function store(StorePostRequest $request)
     {
         //

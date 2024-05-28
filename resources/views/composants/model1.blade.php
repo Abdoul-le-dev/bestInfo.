@@ -8,11 +8,12 @@
 </section>
 
 
-<section>
+<section class="sectionP P-10">
+
     <div class="w-full flex flex-col lg:flex-row justify-between mt-10 ">
     
         {{---  section article----}}
-        <div class="w-full  lg:w-2/3 ">
+        <div class="w-full section_articleP  lg:w-2/3 ">
             {{---  section article----}}
           
     
@@ -21,7 +22,7 @@
             {{---  article concerné----}}
             
     
-            <div class="flex w-full flex-col  p-2 justify-content">
+            <div class="flex  flex-col  p-2 justify-content">
                 {{---  title----}}
                 <div class="flex w-full mt-4 flex-col justify-content">
                     <h1 class="text-xl lg:text-2xl font_title_first">
@@ -62,7 +63,7 @@
                     </div>
                 </div>
                 {{---  image ou video publication----}}
-                <div class="flex mt-2 items-center justify-content">
+                <div class="flex mt-2 items-center justify-center">
                    
                     @if ($post->fichier_image)
     
@@ -124,8 +125,15 @@
                     <img src="./data/icons/chat.png" alt="heart" class="h-6 mr-4">
                 </div>--}}
     
-                <div class="p-2 bg-[#DCDEE8]  rounded-lg ">
-                    <img src="./data/icons/share.png" alt="share" class="h-6 mr-4">
+                <div class="p-2 bg-[#DCDEE8]  rounded-lg flex flex-row ">
+                    <img src="./data/icons/share.png" alt="share" class="h-6 mr-4 share">
+                    <div class="flex flex-row social hidden ">
+                        <img src="./data/icons/facebook.png" alt="facebook" class="h-6 mr-4 hover:h-8 ">
+                        <img src="./data/icons/tiktok.png" alt="tiktok" class="h-6 mr-4 hover:h-8">
+                        <img src="./data/icons/twitter-alt-circle.png" alt="twitter" class="h-6 mr-4 hover:h-8">
+                        <img src="./data/icons/gmail.png" alt="gmail" class="h-6 mr-4 hover:h-8">
+                        <img src="./data/icons/social.png" alt="instagram" class="h-6 mr-4 hover:h-8">
+                    </div>
                 </div>
         
             </div>
@@ -139,7 +147,7 @@
         
         
         {{---  secion rubrique ----}}
-        <div class="flex section_article flex-col w-full lg:w-1/3  lg:flex ">
+        <div class="flex section_article flex-col w-full lg:w-1/3  ">
     
             {{---  Article a metre en avant comme sur la culture ----}}
     

@@ -1,35 +1,31 @@
 var section_article = document.querySelector('.section_article');
 
+function getDataFromLocalStorage(key) {
+    var data = localStorage.getItem(key);
+    if (data === null || data === 'undefined') {
+        return [];
+    } else {
+        try {
+            return JSON.parse(data);
+        } catch (e) {
+            console.error(`Erreur lors du parsing de JSON pour la clé ${key}:`, e);
+            return [];
+        }
+    }
+}
+
 function getArticle_avant() {
-    var data_avant = localStorage.getItem('data_avant');
-    if (data_avant == null) {
-        return [];
-
-    }
-    else {
-        return JSON.parse(data_avant);
-    }
+    return getDataFromLocalStorage('data_avant');
 }
+
 function getArticle_recherche() {
-    var data_recherche = localStorage.getItem('data_recherche');
-    if (data_recherche == null) {
-        return [];
-
-    }
-    else {
-        return JSON.parse(data_recherche);
-    }
+    return getDataFromLocalStorage('data_recherche');
 }
+
 function getArticle_similaire() {
-    var data_similaire = localStorage.getItem('data_similaire');
-    if (data_similaire == null) {
-        return [];
-
-    }
-    else {
-        return JSON.parse(data_similaire);
-    }
+    return getDataFromLocalStorage('data_similaire');
 }
+
 function getRandomIntInclusive(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -39,52 +35,64 @@ function getRandomIntInclusive(min, max) {
 
 var data_avant = getArticle_avant();
 
-data_avant.forEach(data_avant => {
-    var id = data_avant.id_article;
-    var data_check = getArticle_recherche();
-    var found = false;
+if(data_avant.length == 0)
+{
+   section_article.classList.add('hidden');
+    document.querySelector('.section_articleP').classList.remove('lg:w-2/3');
 
-    data_check.forEach(data => {
-        if (data.id == id) {
-            displayData(data);
-            found = true;
-        }
-    });
 
-    if (!found) {
-        $.ajax({
-            url: '/recherche?recherche=' + id,
-            type: 'GET',
-            success: function (response) {
-                if (response.data) {
-                    let data = response.data;
-                    let existingData = localStorage.getItem('data_recherche');
-
-                    if (existingData) {
-                        existingData = JSON.parse(existingData);
-                        existingData.push(data);
-                        localStorage.setItem('data_recherche', JSON.stringify(existingData));
-                    } else {
-                        localStorage.setItem('data_recherche', JSON.stringify([data]));
-                    }
-
-                    console.log('Données article recherche trouvées et enregistrées dans le localStorage.');
-                    displayData(data);
-                } else {
-                    console.log('Aucune donnée trouvée pour cet article.');
-                    section_article.classList.add('hidden');
-                }
-            },
-            error: function (xhr, status, error) {
-                if (xhr.status === 404) {
-                    console.error('Données non trouvées :', error);
-                } else {
-                    console.error('Erreur lors de la récupération des données :', error);
-                }
+}
+else
+{
+    data_avant.forEach(data_avant => {
+        var id = data_avant.id_article;
+        var data_check = getArticle_recherche();
+        var found = false;
+    
+        data_check.forEach(data => {
+            if (data.id == id) {
+                displayData(data);
+                found = true;
             }
         });
-    }
-});
+    
+        if (!found) {
+            $.ajax({
+                url: '/recherche?recherche=' + id,
+                type: 'GET',
+                success: function (response) {
+                    if (response.data) {
+                        let data = response.data;
+                        let existingData = localStorage.getItem('data_recherche');
+    
+                        if (existingData) {
+                            existingData = JSON.parse(existingData);
+                            existingData.push(data);
+                            localStorage.setItem('data_recherche', JSON.stringify(existingData));
+                        } else {
+                            localStorage.setItem('data_recherche', JSON.stringify([data]));
+                        }
+    
+                        console.log('Données article recherche trouvées et enregistrées dans le localStorage.');
+                        displayData(data);
+                    } else {
+                        console.log('Aucune donnée trouvée pour cet article.');
+                        section_article.classList.add('hidden');
+                    }
+                },
+                error: function (xhr, status, error) {
+                    if (xhr.status === 404) {
+                        console.error('Données non trouvées :', error);
+                    } else {
+                        console.error('Erreur lors de la récupération des données :', error);
+                    }
+                }
+            });
+        }
+    });
+}
+
+
 
 
 function displayData(data) {
@@ -236,6 +244,7 @@ function checkAndCreatePosts() {
         // Vérifier si l'article existe déjà dans data_avant
         if(data_avant)
             {
+                
                     data_avant.forEach(datas => {
                         // Vérifier si l'article existe déjà dans data_avant
                         
@@ -246,7 +255,7 @@ function checkAndCreatePosts() {
                         });
             }
           
-        if (existsInAvant) {
+        if (!existsInAvant ) {
             // Si l'article n'existe pas, faire la requête AJAX
             $.ajax({
                 url: '/articlesearch?id=' + data,
@@ -254,6 +263,7 @@ function checkAndCreatePosts() {
                 success: function (response) {
                     // Récupérer les données depuis la réponse
                     let post = response.data;
+                   console.log(post.id)
                     createPostElement(post);
 
                     // Mettre à jour items et réinitialiser l'animation
@@ -420,38 +430,32 @@ function createPostElement(post) {
         subDivaudios.className = 'flex flex-row items-center justify-center ';
 
         const regex = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/|youtube-nocookie\.com\/embed\/)([^"&?\/\s]{11})/i;
-        const match =data.fichier_link.match(regex);
+        const match =post.fichier_link.match(regex);
 
         const videoId = match[1];
 
-    if (videoId) {
-        const iframeUrl = 'https://www.youtube.com/embed/'+videoId+'?si=EgaLvDz1u_iXTx5c';
+        if (match && match[1]) {
+            const videoId = match[1];
+            const iframeUrl =post.fichier_link;
 
-        // Créer l'élément <div>
-       // const div = document.createElement('div');
+            const iframe = document.createElement('iframe');
+            iframe.className = 'h-[200px] mt-2 w-full';
+            iframe.width = '560';
+            iframe.height = '315';
+            iframe.src = iframeUrl;
+            iframe.title = 'YouTube video player';
+            iframe.setAttribute('frameborder', '0');
+            iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+            iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+            iframe.setAttribute('allowfullscreen', true);
 
-        // Créer l'élément <iframe>
-        const iframe = document.createElement('iframe');
-        iframe.className ='h-[200px] mt-2 w-full'
-        iframe.width = '560';
-        iframe.height = '315';
-        iframe.src = iframeUrl;
-        iframe.title = 'YouTube video player';
-        iframe.setAttribute('frameborder', '0');
-        iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
-        iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
-        iframe.setAttribute('allowfullscreen', true);
-
-        // Ajouter l'élément <iframe> au <div>
-        mainDiv.appendChild(iframe);
-
-        
-
-        // Ajouter le <div> à l'élément avec l'ID 'section_article'
-     
-    } else {
-        console.error('Invalid YouTube URL');
-    }
+            //div.appendChild();
+            subDivaudios.appendChild(iframe);
+             mainDiv.appendChild(subDivaudios);
+            
+        } else {
+            console.error('Invalid YouTube URL');
+        }
         
 
     
@@ -460,7 +464,7 @@ function createPostElement(post) {
        
 
 
-        subDiv1.appendChild(subDivaudios);
+        
         
     }
 
@@ -481,5 +485,3 @@ function createPostElement(post) {
 }
 
 // Exemple de post pour la génération
-
-

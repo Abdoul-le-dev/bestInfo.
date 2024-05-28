@@ -9,10 +9,10 @@
         <div class="flex items-center justify-between"><span class="font-light text-gray-600 Placeholder">{{ $post->created_at}}</span><a href="#"
                 class="px-2 py-1 Placeholder font-bold text-gray-100  rounded bg-[#4287F5]">{{ $post->category->name}}</a>
         </div>
-        <div class="mt-2"><a href="{{ route('article',['id'=> $post->id])}}" class="text-xl font-normal text-black hover:underline font_title_first">{{ $post->title}}</a>
+        <div class="mt-2"><a href="{{ route('articles',['id'=> $post->id])}}" class="text-xl font-normal text-black hover:underline font_title_first">{{ $post->title}}</a>
             <p class="mt-2 text-gray-600 Placeholder">{{ Str::limit($post->description, 220) }}</p>
         </div>
-        <div class="flex items-center justify-between mt-4"><a href="{{ route('article',['id'=> $post->id])}}"
+        <div class="flex items-center justify-between mt-4"><a href="{{ route('articles',['id'=> $post->id])}}"
                 class="text-blue-500 hover:underline font_title_first">Read more</a>
             <div><a href="#" class="flex items-center"><img
                         src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=731&amp;q=80"

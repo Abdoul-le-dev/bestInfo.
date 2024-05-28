@@ -212,4 +212,31 @@ function CategorieRedirect(id)
 
     });
 }
+function Pop() {
+
+    
+    let pop = document.querySelector('.Pop');
+    pop.classList.remove('Pops');
+    pop.classList.remove('hidden');
+    pop.classList.add('Popt');
+    pop.classList.add('block')
+    pop.addEventListener('animationend', () => {
+        pop.classList.remove('hidden');
+        pop.classList.add('block')
+
+    });
+    menu2();
+    
+
+}
+function PopR() {
+    let pop = document.querySelector('.Pop');
+    pop.classList.remove('Popt');
+    pop.classList.add('Pops');
+    pop.addEventListener('animationend', () => {
+        pop.classList.remove('block');
+        pop.classList.add('hidden');
+    });
+
+}
 

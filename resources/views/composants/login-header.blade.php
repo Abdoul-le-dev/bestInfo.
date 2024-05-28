@@ -30,7 +30,7 @@
            <div class="flex items-center ">
                 <h2 class="font_title_first text-xl Logo">
         
-                    <span class="Logo "><span class="text-[#4287f5] Logo1">Best</span> Infos</span>
+                    <a href="/"><span class="Logo "><span class="text-[#4287f5] Logo1">Best</span> Infos</span></a>
                 </h2>
            </div>
         </div>   
@@ -45,7 +45,7 @@
        <div class="flex items-center">
         <h2 class="font_title_first text-xl Logo">
 
-            <span class="Logo2"><span class="text-[#4287f5] Logo1">Best</span> Infos</span></h2>
+           <a href="/" class="cursor-pointer"> <span class="Logo2"><span class="text-[#4287f5] Logo1">Best</span> Infos</span></h2></a>
        </div>
     </div>
 

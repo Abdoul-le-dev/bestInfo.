@@ -44,6 +44,7 @@
         </div>
         <div class="mt-2 flex :flex-row justify-between items-center">
             <a href="{{ route('updates',['id'=> $post->id])}}" class="rounded bg-[#4287f5] border-[#4287f5] p-2 text-white font_title_first text-xs mb-2">Modifier l'article</a>
+            
             <a href="{{  route('delete',['id'=> $post->id])}}" class="rounded bg-red-500 border-red-500  p-2 text-white font_title_first text-xs mb-2">Supprimer l'article</a>
         </div>
        
