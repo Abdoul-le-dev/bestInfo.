@@ -36,6 +36,8 @@ function getCategorie() {
     if (categorie === null || categorie === 'undefined') {
         return [];
     } else {
+        
+
         try {
             return JSON.parse(categorie);
         } catch (e) {
@@ -48,59 +50,82 @@ function getCategorie() {
 var datas = getData_lastest();
 const music_list = [];
 
-if (datas != null && datas.length > 0) {
+if (datas != null) {
     var data = datas[0];
-    if(data.type_article == 'Poadcast')
-    {
+    if (data.type_article === 'Poadcast') {
+       // alert(data.fichier_audio)
         music_list.push({
             music: '/storage/' + data.fichier_audio
         });
-        // alert(music_list[0].music);
-        var Categorie = getCategorie();
-        if (Categorie) {
-    
-            var data_category = data.category_id;
-            var categorie_name = '';
-    
-            Categorie.forEach(Categorie => {
-    
-                if (Categorie.id == data_category) {
-                    categorie_name = Categorie.name
-    
-                }
-    
-            });
-            if (Categorie_model3) {
-                Categorie_model3.innerText = categorie_name;
-    
-            }
-            if (Titre_model3) {
-                Titre_model3.innerText = data.title
-    
-    
-            }
-            if (Img_model3) {
-                if (data.fichier_image != null) {
-                    Img_model3.src = '/storage/' + data.fichier_image;
-                }
-    
-            }
-            if (Description_model3) {
-    
-                Description_model3.innerText =data.description
-    
-            }
-        }
-       
+        updateDOMElements(data);
     }
-   
-   
+} else {
+    const articleId = $('.article-section').data('article-id');
+  //  alert(articleId)
+    $.ajax({
+        url: '/recherche?recherche=' + articleId,
+        type: 'GET',
+        success: function (response) {
+            if (response.data) {
+                let datas = response.data;
+                localStorage.setItem('data_poadcast', JSON.stringify(datas));
+              
+                var data_poadcast = localStorage.getItem('data_poadcast');
+                if (data_poadcast=== null || data_poadcast === 'undefined') {
+                    return [];
+                } else {
+                    
+            
+                   
+                 var  data = JSON.parse(data_poadcast);
+                } 
+                 //data= data[0];
+                
+                if (data.type_article === 'Poadcast') {
+                    alert(data.fichier_audio)
+                    music_list.push({
+                        music: '/storage/' + data.fichier_audio
+                    });
+                    updateDOMElements(data);
+                }
+            } 
+            
+        },
+        
+    });
 }
 
-loadTrack(track_index);
+function updateDOMElements(data) {
+    var Categorie = getCategorie();
+    if (Categorie) {
+        var data_category = data.category_id;
+        var categorie_name = '';
+
+        Categorie.forEach(function (Categorie) {
+            if (Categorie.id === data_category) {
+                categorie_name = Categorie.name;
+            }
+        });
+
+        if (Categorie_model3) {
+            Categorie_model3.innerText = categorie_name;
+        }
+        if (Titre_model3) {
+            Titre_model3.innerText = data.title;
+        }
+        if (Img_model3 && data.fichier_image !== null) {
+            Img_model3.src = '/storage/' + data.fichier_image;
+        }
+        if (Description_model3) {
+            Description_model3.innerText = data.description;
+        }
+    }
+}
 
 function loadTrack(track_index) {
+    //alert(music_list.length )
     if (music_list.length === 0 || !music_list[track_index]) {
+        
         console.error('Music list is empty or track index is out of bounds');
         return;
     }
@@ -111,10 +136,11 @@ function loadTrack(track_index) {
     curr_track.src = music_list[track_index].music;
     curr_track.load();
 
-
     updateTimer = setInterval(setUpdate, 1000);
-
 }
+
+loadTrack(track_index);
+
 
 function random_bg_color() {
     let hex = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e'];

@@ -42,6 +42,14 @@ if(data_avant.length == 0)
 
 
 }
+else if(data_avant.length < 3 )
+{   if(section_article)
+    {
+        section_article.classList.add('hidden');
+        document.querySelector('.section_articleP').classList.remove('lg:w-2/3');
+    }
+    
+}
 else
 {
     data_avant.forEach(data_avant => {
@@ -345,7 +353,7 @@ function reloadItemsAndAnimate() {
 }
 
 // Fonction pour créer un élément de post
-function createPostElement(post) {
+/*function createPostElement(post) {
     const container = document.querySelector('.slider');
     const div = document.createElement('div');
     div.className = 'item flex flex-col';
@@ -369,20 +377,11 @@ function createPostElement(post) {
     div.appendChild(readMore);
 
     container.appendChild(div);
-}
-
-// Initial call to set up posts and animation
-checkAndCreatePosts();
-
-
-// Initial call to set up animation
-reloadItemsAndAnimate();
-
-// Fonction pour générer un nouvel élément avec les propriétés spécifiées
+}*/
 function createPostElement(post) {
     // Créer l'élément principal <div>
     const mainDiv = document.createElement('div');
-    mainDiv.className = 'item flex flex-col justify-between';
+    mainDiv.className = 'item flex flex-col justify-between w-[250px] lg:w-[300px]';
 
     // Créer l'élément <img> et définir ses attributs
    
@@ -475,13 +474,28 @@ function createPostElement(post) {
     mainDiv.appendChild(titleP);
 
     // Créer l'élément <p> pour le lien "Lire plus" et définir ses classes et son contenu
-    const readMoreP = document.createElement('p');
+    const readMoreP = document.createElement('a');
+    readMoreP.href='/article_data?id='+ post.id;
     readMoreP.className = 'mt-6 text-blue-400 cursor-pointer';
     readMoreP.textContent = 'Lire plus';
     mainDiv.appendChild(readMoreP);
 
     // Ajouter le <div> principal à l'élément du document souhaité
-    document.querySelector('.slider').appendChild(mainDiv); // Assurez-vous que '#container' est l'ID de l'élément parent où vous souhaitez ajouter les nouveaux éléments
+    if(document.querySelector('.slider'))
+     {
+            document.querySelector('.slider').appendChild(mainDiv);
+    }
+    // Assurez-vous que '#container' est l'ID de l'élément parent où vous souhaitez ajouter les nouveaux éléments
 }
+// Initial call to set up posts and animation
+checkAndCreatePosts();
+
+
+// Initial call to set up animation
+reloadItemsAndAnimate();
+
+// Fonction pour générer un nouvel élément avec les propriétés spécifiées
+
+
 
 // Exemple de post pour la génération

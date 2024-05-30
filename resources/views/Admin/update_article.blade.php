@@ -64,7 +64,7 @@
         <div class="flex flex-col Placeholder items-center">
             <p>
                 <a >Article lié n°1:</a> 
-                @if ($article_similaire->post_similaire_1 != null)
+               {{-- @if ($article_similaire->post_similaire_1 != null)
 
                 {{$article_similaire->post_similaire_1}}
 
@@ -72,48 +72,48 @@
                 Auccun
                     
                 @endif
-           
+           --}}
             </p>
         </div>
         <div class="flex flex-row justify-between items-center mb-2">
             <label for="article1" class="mx-2 font_title_first w-1/3  lg:w-1/2">Id Article lié n°1</label>
-            <input name="article1" type="text" value=" {{$article_similaire->post_similaire_1}}" class="border px-2 rounded-md focus:outline-none  focus:border-[#4287f5]" >
+            <input name="article1" type="text"   class="border px-2 rounded-md focus:outline-none  focus:border-[#4287f5]" >
         </div>
         <div class="flex flex-col Placeholder items-center">
             <p>
                 <a >Article lié n°2:</a> 
-                @if ($article_similaire->post_similaire_2 != null)
+                {{--@if ($article_similaire->post_similaire_2 != null)
 
                 {{$article_similaire->post_similaire_2}}
 
                 @else
                 Auccun
                     
-                @endif
+                @endif--}}
            
             </p>
         </div>
         <div class="flex flex-row justify-between items-center mb-2">
             <label for="article2" class="mx-2 font_title_first lg:w-1/2">Id Article lié n°2</label>
-            <input name="article2" type="text" value=" {{$article_similaire->post_similaire_2}}" class="border px-2 rounded-md focus:outline-none  focus:border-[#4287f5]">
+            <input name="article2" type="text"   class="border px-2 rounded-md focus:outline-none  focus:border-[#4287f5]">
         </div>
         <div class="flex flex-col Placeholder items-center">
             <p>
                 <a >Article lié n°3:</a> 
-                @if ($article_similaire->post_similaire_3 != null)
+                {{--@if ($article_similaire->post_similaire_3 != null)
 
                 {{$article_similaire->post_similaire_3}}
 
                 @else
                 Auccun
                     
-                @endif
+                @endif--}}
            
             </p>
         </div>
         <div class="flex flex-row justify-between items-center mb-2">
             <label for="article3" class="mx-2 font_title_first lg:w-1/2">Id Article lié n°3</label>
-            <input name="article3" type="text" value=" {{$article_similaire->post_similaire_3}}" class="border px-2 rounded-md focus:outline-none  focus:border-[#4287f5]">
+            <input name="article3" type="text"   class="border px-2 rounded-md focus:outline-none  focus:border-[#4287f5]">
         </div>
        
 
@@ -201,7 +201,7 @@
      
         <div class="flex flex-col Placeholder items-center">
             <p>
-                <a >Article lié n°1:</a> 
+               {{-- <a >Article lié n°1:</a> 
                 @if ($article_similaire->post_similaire_1 != null)
 
                 {{$article_similaire->post_similaire_1}}
@@ -209,17 +209,17 @@
                 @else
                 Auccun
                     
-                @endif
+                @endif--}}
            
             </p>
         </div>
         <div class="flex flex-row justify-between items-center mb-2">
             <label for="article1" class="mx-2 font_title_first w-1/3  lg:w-1/2">Id Article lié n°1</label>
-            <input name="article1" type="text" value=" {{$article_similaire->post_similaire_1}}" class="border px-2 rounded-md focus:outline-none  focus:border-[#4287f5]" >
+            <input name="article1" type="text"   class="border px-2 rounded-md focus:outline-none  focus:border-[#4287f5]" >
         </div>
         <div class="flex flex-col Placeholder items-center">
             <p>
-                <a >Article lié n°2:</a> 
+                {{--<a >Article lié n°2:</a> 
                 @if ($article_similaire->post_similaire_2 != null)
 
                 {{$article_similaire->post_similaire_2}}
@@ -227,17 +227,17 @@
                 @else
                 Auccun
                     
-                @endif
+                @endif--}}
            
             </p>
         </div>
         <div class="flex flex-row justify-between items-center mb-2">
             <label for="article2" class="mx-2 font_title_first lg:w-1/2">Id Article lié n°2</label>
-            <input name="article2" type="text" value=" {{$article_similaire->post_similaire_2}}" class="border px-2 rounded-md focus:outline-none  focus:border-[#4287f5]">
+            <input name="article2" type="text"   class="border px-2 rounded-md focus:outline-none  focus:border-[#4287f5]">
         </div>
         <div class="flex flex-col Placeholder items-center">
             <p>
-                <a >Article lié n°3:</a> 
+                {{--<a >Article lié n°3:</a> 
                 @if ($article_similaire->post_similaire_3 != null)
 
                 {{$article_similaire->post_similaire_3}}
@@ -245,13 +245,13 @@
                 @else
                 Auccun
                     
-                @endif
+                @endif--}}
            
             </p>
         </div>
         <div class="flex flex-row justify-between items-center mb-2">
             <label for="article3" class="mx-2 font_title_first lg:w-1/2">Id Article lié n°3</label>
-            <input name="article3" type="text" value=" {{$article_similaire->post_similaire_3}}" class="border px-2 rounded-md focus:outline-none  focus:border-[#4287f5]">
+            <input name="article3" type="text"   class="border px-2 rounded-md focus:outline-none  focus:border-[#4287f5]">
         </div>
        
 
@@ -316,7 +316,7 @@
         
         <div class="flex flex-col Placeholder items-center">
             <p>
-                <a >Article lié n°1:</a> 
+               {{-- <a >Article lié n°1:</a> 
                 @if ($article_similaire->post_similaire_1 != null)
 
                 {{$article_similaire->post_similaire_1}}
@@ -324,17 +324,17 @@
                 @else
                 Auccun
                     
-                @endif
+                @endif--}}
            
             </p>
         </div>
         <div class="flex flex-row justify-between items-center mb-2">
             <label for="article1" class="mx-2 font_title_first w-1/3  lg:w-1/2">Id Article lié n°1</label>
-            <input name="article1" type="text" value=" {{$article_similaire->post_similaire_1}}" class="border px-2 rounded-md focus:outline-none  focus:border-[#4287f5]" >
+            <input name="article1" type="text"   class="border px-2 rounded-md focus:outline-none  focus:border-[#4287f5]" >
         </div>
         <div class="flex flex-col Placeholder items-center">
             <p>
-                <a >Article lié n°2:</a> 
+                {{--<a >Article lié n°2:</a> 
                 @if ($article_similaire->post_similaire_2 != null)
 
                 {{$article_similaire->post_similaire_2}}
@@ -342,17 +342,17 @@
                 @else
                 Auccun
                     
-                @endif
+                @endif--}}
            
             </p>
         </div>
         <div class="flex flex-row justify-between items-center mb-2">
             <label for="article2" class="mx-2 font_title_first lg:w-1/2">Id Article lié n°2</label>
-            <input name="article2" type="text" value=" {{$article_similaire->post_similaire_2}}" class="border px-2 rounded-md focus:outline-none  focus:border-[#4287f5]">
+            <input name="article2" type="text"   class="border px-2 rounded-md focus:outline-none  focus:border-[#4287f5]">
         </div>
         <div class="flex flex-col Placeholder items-center">
             <p>
-                <a >Article lié n°3:</a> 
+               {{-- <a >Article lié n°3:</a> 
                 @if ($article_similaire->post_similaire_3 != null)
 
                 {{$article_similaire->post_similaire_3}}
@@ -360,13 +360,13 @@
                 @else
                 Auccun
                     
-                @endif
+                @endif--}}
            
             </p>
         </div>
         <div class="flex flex-row justify-between items-center mb-2">
             <label for="article3" class="mx-2 font_title_first lg:w-1/2">Id Article lié n°3</label>
-            <input name="article3" type="text" value=" {{$article_similaire->post_similaire_3}}" class="border px-2 rounded-md focus:outline-none  focus:border-[#4287f5]">
+            <input name="article3" type="text"   class="border px-2 rounded-md focus:outline-none  focus:border-[#4287f5]">
         </div>
        
 
@@ -452,7 +452,7 @@
         
         <div class="flex flex-col Placeholder items-center">
             <p>
-                <a >Article lié n°1:</a> 
+                {{--<a >Article lié n°1:</a> 
                 @if ($article_similaire->post_similaire_1 != null)
 
                 {{$article_similaire->post_similaire_1}}
@@ -460,17 +460,17 @@
                 @else
                 Auccun
                     
-                @endif
+                @endif--}}
            
             </p>
         </div>
         <div class="flex flex-row justify-between items-center mb-2">
             <label for="article1" class="mx-2 font_title_first w-1/3  lg:w-1/2">Id Article lié n°1</label>
-            <input name="article1" type="text" value=" {{$article_similaire->post_similaire_1}}" class="border px-2 rounded-md focus:outline-none  focus:border-[#4287f5]" >
+            <input name="article1" type="text"   class="border px-2 rounded-md focus:outline-none  focus:border-[#4287f5]" >
         </div>
         <div class="flex flex-col Placeholder items-center">
             <p>
-                <a >Article lié n°2:</a> 
+               {{-- <a >Article lié n°2:</a> 
                 @if ($article_similaire->post_similaire_2 != null)
 
                 {{$article_similaire->post_similaire_2}}
@@ -478,17 +478,17 @@
                 @else
                 Auccun
                     
-                @endif
+                @endif--}}
            
             </p>
         </div>
         <div class="flex flex-row justify-between items-center mb-2">
             <label for="article2" class="mx-2 font_title_first lg:w-1/2">Id Article lié n°2</label>
-            <input name="article2" type="text" value=" {{$article_similaire->post_similaire_2}}" class="border px-2 rounded-md focus:outline-none  focus:border-[#4287f5]">
+            <input name="article2" type="text"   class="border px-2 rounded-md focus:outline-none  focus:border-[#4287f5]">
         </div>
         <div class="flex flex-col Placeholder items-center">
             <p>
-                <a >Article lié n°3:</a> 
+                {{--<a >Article lié n°3:</a> 
                 @if ($article_similaire->post_similaire_3 != null)
 
                 {{$article_similaire->post_similaire_3}}
@@ -496,13 +496,13 @@
                 @else
                 Auccun
                     
-                @endif
+                @endif--}}
            
             </p>
         </div>
         <div class="flex flex-row justify-between items-center mb-2">
             <label for="article3" class="mx-2 font_title_first lg:w-1/2">Id Article lié n°3</label>
-            <input name="article3" type="text" value=" {{$article_similaire->post_similaire_3}}" class="border px-2 rounded-md focus:outline-none  focus:border-[#4287f5]">
+            <input name="article3" type="text"   class="border px-2 rounded-md focus:outline-none  focus:border-[#4287f5]">
         </div>
        
 

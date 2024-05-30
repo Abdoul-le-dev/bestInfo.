@@ -1,4 +1,4 @@
-<section class="bg-black w-full" >
+<section class="bg-black w-full  article-section"   data-article-id="{{$post->id}}" >
 
     <div class="flex flex-col lg:p-6 w-full ">
 
@@ -7,7 +7,7 @@
         </div>
 
         <div>
-            <iframe class="w-full h-80 lg:min-h-[400px]"  src="https://www.youtube.com/embed/{{$post->fichier_link}}?si=RPHmhGGITmauQ_52" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <iframe class="w-full h-80 lg:min-h-[400px]"  src="{{$post->fichier_link}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
         </div>
         

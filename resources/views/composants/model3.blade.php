@@ -1,4 +1,4 @@
-<section class=" hidden min-h-[80vh] lg:flex lg:flex-row  p-10 bg-[url('./data/image/1.jpg')] bg-contain">
+<section class=" hidden  article-section min-h-[80vh] lg:flex lg:flex-row  p-10 bg-[url('./data/image/1.jpg')] bg-contain"  data-article-id="{{$post->id}}">
     <div class="w-2/3 flex flex-col justify-center">
 
         <p class="Categorie_model3 Title_font text-2xl mt-2 text-white p-10"></p>

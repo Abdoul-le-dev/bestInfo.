@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title class="font_title_first">Best Infos @yield('page_title')</title>
+    <link rel="shortcut icon" type="x-icon" href="./data/image/logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Acme&family=Concert+One&display=swap" rel="stylesheet">
@@ -16,6 +17,7 @@
    
    
     <script defer src="./js/js.js"></script>
+    <script defer src="./js/cookie.js"></script>
     <script defer src="./js/social.js"></script>
     <script defer src="./js/search.js"></script>
     <script defer src="./js/gestion.js"></script>

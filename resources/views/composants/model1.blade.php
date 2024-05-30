@@ -8,7 +8,7 @@
 </section>
 
 
-<section class="sectionP P-10">
+<section class="sectionP P-10 article-section"  data-article-id=" {{$post->id}}">
 
     <div class="w-full flex flex-col lg:flex-row justify-between mt-10 ">
     
@@ -183,7 +183,7 @@
             <button id="prev1" class="lg:hidden ">></button>
             
         </div>
-        <div class="slider">
+        <div class="slider flex flex-row justify-center items-center w-full">
             
             
             {{---@foreach ($tab as $post )

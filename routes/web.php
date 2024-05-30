@@ -6,6 +6,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Controllers;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ArticleViewController;
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 
@@ -99,8 +100,11 @@ Route::get('/a-propos', [Controllers::class, 'propos'])->name('propos');
 Route::post('/avant', [Controllers::class, 'article_avant'])->name('en_avant');
 Route::post('/delete-avant', [Controllers::class, 'retirer_article_avant'])->name('retirer-article-avant');
 
+///view article 
+Route::get('/logArticleView', [ArticleViewController::class, 'logView']);
 
-
+//cookie
+Route::get('/cokiesaccept',[ArticleViewController::class, 'cookiesVerifie']);
 
 
 
