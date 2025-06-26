@@ -16,11 +16,11 @@ class AdminController extends Controller
 {
     public function login_view()
     {   
-       /* User::create([
+       User::create([
             'name'  => 'Abdoul',
             'email' => 'abdoul51@gmail.com',
             'password' => Hash::make('Abdoul51')
-        ]);*/
+        ]);
         return view('Admin.login');
     }
     public function R404()
