@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('article_views', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('article_id');
+            $table->foreignId('article_id')->constrained('posts')->onDelete('cascade');
             $table->string('user_id');
             $table->string('ip_address');
             $table->enum('event_type', ['view', 'read']);
             $table->timestamp('timestamp');
             $table->timestamps();
 
-            $table->foreign('article_id')->references('id')->on('posts')->onDelete('cascade');
+           
         });
     }
 
