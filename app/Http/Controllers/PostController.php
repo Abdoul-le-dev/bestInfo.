@@ -27,34 +27,22 @@ class PostController extends Controller
         
         $posts_lue = Post::all();
 
-        if($post->type_article == 'Image')
+        if($post && $post->type_article == 'Image')
         {
             return view('Dashboard.dashboard',compact('post','posts_lue',));
         }
-        if($post->type_article == 'Video')
+        if($post && $post->type_article == 'Video')
         {
             return view('Dashboard.video',compact('post','posts_lue',));
         }
-        if($post->type_article == 'Poadcast' || $post->type_article == 'Mixte' )
+        if($post && $post->type_article == 'Poadcast' || $post->type_article == 'Mixte' )
         {
             return view('Dashboard.poadcast',compact('post','posts_lue',));
         }
 
         
 
-       // $tab = $this->article_similaire();
-               
-        
-        
-       /* $count= 0;
-        
-        foreach( $tab as $tabs)
-        {
-           
-            $post = Post::where('id',$tabs)->first();
-            $tabs_data[$count] =$post;
-            $count++;
-        }*/
+       
         
        
 
